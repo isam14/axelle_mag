@@ -1,0 +1,53 @@
+body {
+    padding: 0;
+    margin: 3% 0 0 0;
+    background: linear-gradient(#FFD4E4, white);
+    background-position: center;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 1.5em;
+}
+
+/*div {*/
+    /*border: 1px solid black;*/
+/*}*/
+.logo {
+    max-width: 40%;
+    margin-bottom: 3%;
+}
+
+.topMenu {
+    border: 1px solid black;
+}
+
+.itemTopMenu>a, .itemTopMenu>a:active, .itemTopMenu>a:visited {
+    color: black;
+    padding-top: 0.3em;
+}
+
+.itemTopMenu>a:hover {
+    font-weight: 900;
+    text-decoration: none;
+    border-top: 1px solid black;
+}
+
+input, input:focus {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    outline-width: 0;
+}
+
+button, button:focus {
+    background-color: rgba(0,0,0,0);
+    border: none;
+    outline-width: 0;
+}
+
+.borderBottom {
+    border-bottom: 1px solid black;
+}
+
+.borderTop {
+    border-top: 1px solid black;
+}
