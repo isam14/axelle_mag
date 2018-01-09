@@ -51,3 +51,7 @@ button, button:focus {
 .borderTop {
     border-top: 1px solid black;
 }
+.text-logo{
+    font-size:3em; 
+    font-family: 'Dancing Script', cursive;
+}
