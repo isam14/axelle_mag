@@ -122,8 +122,8 @@ button, button:focus {
     margin-bottom: 0;
     width: 100%;
     color: white;
-    background-color: rgba(0,0,0,0.5);
-    padding-top: 1em;
+    background-color: rgba(0,0,0,0.75);
+    padding: 0.3em 0.5em;
 }
 
 .crop {
