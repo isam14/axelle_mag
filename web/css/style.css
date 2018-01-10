@@ -1,7 +1,7 @@
 body {
     padding: 0;
     margin: 3% 0 0 0;
-    background: linear-gradient(#FFD4E4, white);
+    background: linear-gradient(#FFDBEB, white);
     background-position: center;
     background-size: 100% 100%;
     background-attachment: fixed;
@@ -12,6 +12,7 @@ body {
 /*div {*/
     /*border: 1px solid black;*/
 /*}*/
+
 .logo {
     max-width: 40%;
     margin-bottom: 3%;
@@ -21,20 +22,48 @@ body {
     border: 1px solid black;
 }
 
-.itemTopMenu>a, .itemTopMenu>a:active, .itemTopMenu>a:visited {
+.itemTopMenu a, .itemTopMenu a:active, .itemTopMenu a:visited {
     color: black;
     padding-top: 0.3em;
 }
 
-.itemTopMenu>a:hover {
+.itemTopMenu a:hover {
     font-weight: 900;
     text-decoration: none;
     border-top: 1px solid black;
 }
 
+.sideMenuLink {
+    margin-top: 0;
+    padding-top: 0;
+    color: black;
+    text-decoration: none;
+}
+.sideMenuLink h4 {
+    padding: 0 1.5em 0 0;
+}
+
+.sideMenuLink:hover h4 {
+    /*border-bottom: 1px solid black;*/
+    font-weight: 900;
+    color: black;
+}
+
+a, a:active, a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: 900;
+    color: black;
+}
+
 input, input:focus {
     background-color: rgba(0,0,0,0);
     border: none;
+    border-right: 1px solid black;
+    padding: 0.2em 0.5em 0 0;
     outline-width: 0;
 }
 
@@ -46,8 +75,109 @@ button, button:focus {
 
 .borderBottom {
     border-bottom: 1px solid black;
+    margin-bottom: 3%;
 }
 
 .borderTop {
     border-top: 1px solid black;
+    padding-top: 1%;
+}
+
+.borderLeft {
+    border-left: 1px solid black;
+}
+
+.borderRight {
+    border-right: 1px dashed black;
+}
+
+.margTop {
+    margin-top: 3%;
+}
+
+.paddingTop {
+    padding-top: 0.24em;
+}
+
+.noPadding h3 {
+    padding: 0;
+    margin-top: -0.25em;
+}
+
+.imageContained {
+    width: 100%;
+}
+
+.articleImage {
+    position: relative;
+    padding: 0;
+    height: 10%;
+}
+
+.articleCaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    margin-bottom: 0;
+    width: 100%;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    padding-top: 1em;
+}
+
+.crop {
+    height: 20em;
+    overflow: hidden;
+}
+
+.cropedImage {
+    width: 100%;
+    min-height: 100%;
+}
+
+.lowMargTop {
+    margin-top: 0;
+}
+
+.articleImage img {
+    max-width: 100%;
+
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+
+.articleImage:hover img {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    max-width: 100%;
+}
+
+.staticSide {
+    position: fixed;
+    width: 277px;
+    z-index: 2;
+}
+
+.newsLetter {
+    position: relative;
+    /*background: linear-gradient(white, #FFDBEB);*/
+    padding: 0.5em 0;
+    z-index: 1;
+}
+
+.mentions {
+    background-color: #bfbfbf;
+    /*background: linear-gradient(white, #4450ba);*/
+    padding: 1em 0 0.5em 0;
+}
+
+.v-bottom{
+    display: inline-block;
+    float: none;
+    vertical-align: middle;
+    width: 49%;
 }
