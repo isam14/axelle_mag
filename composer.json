@@ -21,11 +21,13 @@
     },
     "require": {
         "php": ">=5.5.9",
+        "bmatzner/fontawesome-bundle": "~4.3",
         "components/jquery": "^3.1",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "friendsofsymfony/user-bundle": "~2.0",
         "incenteev/composer-parameter-handler": "^2.0",
+        "javiereguiluz/easyadmin-bundle": "^1.17",
         "oyejorge/less.php": "v1.7.0.14",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
@@ -36,8 +38,7 @@
         "symfony/symfony": "3.3.*",
         "twbs/bootstrap": "^3.3",
         "twig/twig": "^1.0||^2.0",
-        "vich/uploader-bundle": "^1.7",
-        "bmatzner/fontawesome-bundle": "~4.3"
+        "vich/uploader-bundle": "^1.7"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

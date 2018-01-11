@@ -147,3 +147,34 @@ assetic:
 #Vich
 vich_uploader:
     db_driver: orm
+
+#EasyAdminBundle
+easy_admin:
+    entities:
+        - AppBundle\Entity\User
+        # - AppBundle\Entity\Product
+        # - AppBundle\Entity\Category
+    site_name: '<img src="../img/logo.png" />'
+    design:
+        menu:
+        brand_color: '#FFD2E6'
+        color_scheme: 'light'   
+        assets:
+            css:
+                # HTTP protocol-relative URL
+                - '//example.org/css/admin1.css'
+                # absolute non-secure URL
+                - 'http://example.org/css/admin2.css'
+                # absolute secure URL
+                - 'https://example.org/css/admin3.css'
+                # absolute internal bundle URL
+                - '/bundles/user/css/admin4.css'
+                # relative internal bundle URL
+                - 'bundles/app/css/admin5.css'
+            js:
+                # this option works exactly the same as the 'css' option
+                - '//example.org/js/admin1.js'
+                - 'http://example.org/js/admin2.js'
+                - 'https://example.org/js/admin3.js'
+                - '/bundles/user/js/admin4.js'
+                - 'bundles/app/js/admin5.js'    
