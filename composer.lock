@@ -1921,6 +1921,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
+
             "time": "2018-01-11 05:54:03"
         },
         {
