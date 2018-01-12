@@ -3,21 +3,32 @@
     <div class="row">
         <div class="col-md-12 articleImage crop">
             <img class="imageContained" src="http://api.adorable.io/avatars/5000/1" alt="">
-            <h4 class="articleCaption">Lorem ipsum dolor sit amet</h4>
+            <h4 class="articleCaption">{{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|length > 75 ?
+                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|slice(0, 75) ~ '...' :
+                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'  }}
+            </h4>
         </div>
     </div>
 
     {% for i in 0..5 %}
-        <div class="row borderTop margTop">
-            {% set categorie = 'actu' %}
-            <a href="{{ path('categorie', {'id': categorie}) }}"><h1 class="lowMargTop">- Actualités -</h1></a>
-            {% for j in 0..1 %}
-            <div class="col-xs-6 articleImage crop">
-                <a href="{{ path('article', {'catId': categorie, 'id': j}) }}">
-                    <img class="imageContained cropedImage" src="http://api.adorable.io/avatars/500/{{ j+i+i }}" alt="">
-                    <h4 class="articleCaption">Lorem ipsum dolor sit amet</h4>
-                </a>
+        {% set categorie = [['actualite', 'politique', 'societe', 'culture', 'reportage', 'tat', 'avss', 'pmp'],
+        ['Actualités', 'Politique', 'Société', 'Culture', 'Reportages', 'Tête à tête',
+        'Aliénor VS Ségolène', 'Politesse ou Polémique', 'Chroniques']] %}
+        <div class="row margTop">
+            <div class="titleBar">
+                <a href="{{ path('categorie', {'catId': categorie[0][i] }) }}"><h1>{{ categorie[1][i] }}</h1></a>
             </div>
+            {% for j in 0..1 %}
+                <div class="col-xs-6 articleImage crop">
+                    <a href="{{ path('article', {'catId' : categorie[0][i], 'id': j}) }}">
+                        <img class="imageContained cropedImage" src="http://api.adorable.io/avatars/500/{{ j+i+i }}" alt="">
+                        <h4 class="articleCaption">
+                            {{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|length > 55 ?
+                            'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|slice(0, 55) ~ '...' :
+                            'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'  }}
+                        </h4>
+                    </a>
+                </div>
             {% endfor %}
         </div>
     {% endfor %}

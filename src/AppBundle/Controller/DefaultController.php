@@ -18,19 +18,29 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route ("categorie/{id}", name="categorie")
+     * @Route ("/{catId}", name="categorie")
      */
 
     public function categorieAction()
     {
         return $this->render('default/categorie.html.twig');
     }
+
     /**
-     * @Route("categorie/{catId}/article/{id}", name="article")
+     * @Route("/{catId}/article/{id}", name="article")
      */
 
     public function articleAction()
     {
         return $this->render('default/article.html.twig');
+    }
+
+    /**
+     * @Route ("/recherche/", name="recherche")
+     */
+
+    public function searchAction()
+    {
+        return $this->render('default/search.html.twig');
     }
 }
