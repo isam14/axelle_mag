@@ -156,4 +156,3 @@ class SiteInfo
         return $this->mail;
     }
 }
-
