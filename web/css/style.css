@@ -1,7 +1,7 @@
 body {
     padding: 0;
     margin: 3% 0 0 0;
-    background: linear-gradient(#FFDBEB, white);
+    background: linear-gradient(#fcefef, white);
     background-position: center;
     background-size: 100% 100%;
     background-attachment: fixed;
@@ -80,6 +80,10 @@ button, button:focus {
 
 .borderTop {
     border-top: 1px solid black;
+}
+.text-logo{
+    font-size:3em; 
+    font-family: 'Dancing Script', cursive;
     padding-top: 1%;
 }
 
@@ -159,7 +163,21 @@ button, button:focus {
 .staticSide {
     position: fixed;
     width: 277px;
-    z-index: 2;
+    z-index: 3;
+}
+
+.staticMenu {
+    position: fixed;
+    width: 350px;
+    top: 5px;
+    z-index: 3;
+}
+
+.titleMenu {
+    border: 1px solid black;
+    border-left: none;
+    background-color: #fcefef;
+    padding: 0;
 }
 
 .newsLetter {

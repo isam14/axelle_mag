@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
+
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -125,7 +126,7 @@ class Article
     {
         $this->contenu = $contenu;
 
-        return $this;
+      return $this;
     }
 
     /**

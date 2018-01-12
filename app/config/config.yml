@@ -168,9 +168,11 @@ ivory_ck_editor:
            web: ['Image','Link', 'Unlink','Source']
 
 easy_admin:
-    site_name: '<img src="/img/logowhite.png" alt="Logo" />'
+    site_name: '<img src="/img/logo.png" alt="Logo Axelle Mag" />'
     design:
-        brand_color: 'dark'
+        color_scheme: 'light'
+        brand_color: '#FCF0F0'
+        # brand_color: 'dark'
     entities:
         Article:
             class: AppBundle\Entity\Article
@@ -221,6 +223,7 @@ easy_admin:
             class: AppBundle\Entity\User
         Info_Site:
             class: AppBundle\Entity\SiteInfo
+            
 fm_elfinder:
    #assets_path: / # default is /assets, this is where css/js elfinder files are
    instances:
@@ -243,3 +246,4 @@ fm_elfinder:
                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
                        upload_deny: ['all']
                        upload_max_size: 2M # also file upload sizes restricted in php.ini
+
