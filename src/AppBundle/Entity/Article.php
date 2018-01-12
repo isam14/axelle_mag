@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+
 
 /**
  * Article
@@ -75,6 +77,9 @@ class Article
      */
     private $subRubrique;
     
+    public function __construct(){
+        $this->setDatePost(new \DateTime('now'));
+    }
     /**
      * Get id
      *

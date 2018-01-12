@@ -154,17 +154,18 @@ vich_uploader:
 
 
 ivory_ck_editor:
-   configs:
-       article:
-           toolbar: "tool_article"
-   toolbars:
+    configs:
+        article:
+            filebrowserBrowseRoute: 'elfinder'
+            toolbar: "tool_article"
+    toolbars:
        configs:
            tool_article: [ "@texte",  "@puce" , "@other", "@web" ]
        items:
            texte: [ 'Bold', 'Italic', 'Underline' ,'TextColor' ]
            puce:     [ 'NumberedList', 'BulletedList']
            other:     ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
-           web: ['Link', 'Unlink','Source']
+           web: ['Image','Link', 'Unlink','Source']
 
 easy_admin:
     site_name: '<img src="/img/logowhite.png" alt="Logo" />'
@@ -185,7 +186,7 @@ easy_admin:
                 max_results: 30
                 fields:
                     - 'titre'
-                    - { property: 'image', template: 'vich_uploader_image.html.twig' }
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
                     - { property: 'datePost', label: 'Date'}
             show:
                 fields:
@@ -209,8 +210,36 @@ easy_admin:
             class: AppBundle\Entity\SubRubric
             show:
                 fields:
-                    - nom
+                    - name
+            list:
+                fields:
+                    - name
+            form:    
+                fields:
+                    - name
         Utilisateur:
             class: AppBundle\Entity\User
         Info_Site:
             class: AppBundle\Entity\SiteInfo
+fm_elfinder:
+   #assets_path: / # default is /assets, this is where css/js elfinder files are
+   instances:
+       default:
+           locale: %locale% # defaults to current request locale
+           editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce, form, simple, custom
+           #editor_template: custom template for your editor # default null
+           #path_prefix: / # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
+           #fullscreen: true|false # default is true, applies to simple and ckeditor editors
+           #theme: smoothness # jquery theme, default is 'smoothness'
+           include_assets: true # disable if you want to manage loading of javascript and css assets manually
+           #visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
+           connector:
+               #debug: true|false # defaults to false
+               roots:       # at least one root must be defined, defines root filemanager directories
+                   uploads:
+                       #show_hidden: true|false # defaults to false, hides dotfiles
+                       driver: LocalFileSystem
+                       path: uploads
+                       upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                       upload_deny: ['all']
+                       upload_max_size: 2M # also file upload sizes restricted in php.ini

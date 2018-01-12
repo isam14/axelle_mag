@@ -38,7 +38,7 @@ class SubRubric
         $this->articles = new ArrayCollection();
     }
     public function __toString(){
-        return $this->getNom();
+        return $this->getName();
     }
     /**
      * Get id
@@ -73,5 +73,38 @@ class SubRubric
     {
         return $this->name;
     }
-}
 
+    /**
+     * Add article
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return SubRubric
+     */
+    public function addArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->articles[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article
+     *
+     * @param \AppBundle\Entity\Article $article
+     */
+    public function removeArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->articles->removeElement($article);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+}
