@@ -1,0 +1,23 @@
+{# $_GET Twig Method {{ app.request.query.get("search") }} #}
+
+{% extends 'base.html.twig' %}
+{% set search = app.request.query.get('search') %}
+{% block body %}
+    <div class="row margTop">
+        <div class="titleBar">
+            <h1>{{ search }}</h1>
+        </div>
+        {% for i in 0..5 %}
+            <div class="col-xs-6 articleImage crop">
+                <a href="{{ path('article', {'catId': search, 'id': i}) }}">
+                    <img class="imageContained cropedImage" src="http://api.adorable.io/avatars/500/{{ i }}" alt="">
+                    <h4 class="articleCaption">
+                        {{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'|length > 45 ?
+                        'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'|slice(0, 45) ~ '...' :
+                        'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'  }}
+                    </h4>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

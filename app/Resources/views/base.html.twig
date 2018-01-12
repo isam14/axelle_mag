@@ -2,25 +2,26 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}Axelle Mag{% endblock %}</title>
+    <title>{% block title %}Welcome!{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sideMenu.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     {% block stylesheets %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body class="text-center">
 
-<div class="container borderBottom">
-    {% include 'default/header.html.twig' %}
+<div class="container">
+    <div class="col-xs-12 col-md-9">
+        {% include 'default/header.html.twig' %}
+    </div>
 </div>
 
 <div class="staticMenu">
-{% include 'default/leftSideMenu.html.twig' %}
+    {% include 'default/leftSideMenu.html.twig' %}
 </div>
 
 <div class="container">
@@ -28,10 +29,9 @@
         <div class="col-md-9">
             {% block body %}{% endblock %}
         </div>
-        <div class="col-md-3 hidden-sm hidden-xs">
-            <div class="staticSide borderTop borderRight">
-
-            {% include 'default/sideMenu.html.twig' %}
+        <div class="col-sm-offset-9 col-md-3 hidden-sm hidden-xs">
+            <div class="staticSide borderTop borderBottom">
+                {% include 'default/sideMenu.html.twig' %}
             </div>
         </div>
     </div>

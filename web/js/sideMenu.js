@@ -6,7 +6,7 @@ $(document).ready(function () {
     trigger.click(function () {
         hamburger_cross();
     });
-
+    
     function hamburger_cross() {
 
         if (isClosed == true) {

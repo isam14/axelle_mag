@@ -1,19 +1,27 @@
 {% extends 'base.html.twig' %}
+{% set catId = app.request.pathinfo[1:] %}
 {% block body %}
     <div class="row">
         <div class="col-md-12 articleImage crop">
             <img class="imageContained" src="http://api.adorable.io/avatars/5000/1" alt="">
-            <h4 class="articleCaption">Lorem ipsum dolor sit amet</h4>
+            <h4 class="articleCaption">{{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|length > 75 ?
+                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|slice(0, 75) ~ '...' :
+                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'  }}
+            </h4>
         </div>
     </div>
 
     <div class="row margTop">
-        {#<h1 class="lowMargTop">- Actualités -</h1>#}
+        {#<h1 class="lowMargTop">Actualités</h1>#}
         {% for i in 0..15 %}
             <div class="col-xs-3 articleImage crop">
-                <a href="{{ path('article', {'catId': 'test', 'id': i}) }}">
+                <a href="{{ path('article', {'catId' : catId, 'id': i}) }}">
                     <img class="imageContained cropedImage" src="http://api.adorable.io/avatars/500/{{ i+i }}" alt="">
-                    <h4 class="articleCaption">Lorem ipsum dolor sit amet</h4>
+                    <h4 class="articleCaption">
+                        {{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'|length > 35 ?
+                                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'|slice(0, 35) ~ '...' :
+                                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'  }}
+                    </h4>
                 </a>
             </div>
         {% endfor %}
