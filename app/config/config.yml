@@ -7,7 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-
+    app.path.article_images: /uploads/images/articles
 framework:
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
@@ -147,65 +147,70 @@ assetic:
 #Vich
 vich_uploader:
     db_driver: orm
+    mappings:
+        article_images:
+            uri_prefix:         '%app.path.article_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/articles'
 
-#EasyAdminBundle
+
+ivory_ck_editor:
+   configs:
+       article:
+           toolbar: "tool_article"
+   toolbars:
+       configs:
+           tool_article: [ "@texte",  "@puce" , "@other", "@web" ]
+       items:
+           texte: [ 'Bold', 'Italic', 'Underline' ,'TextColor' ]
+           puce:     [ 'NumberedList', 'BulletedList']
+           other:     ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+           web: ['Link', 'Unlink','Source']
+
 easy_admin:
+    site_name: '<img src="/img/logowhite.png" alt="Logo" />'
+    design:
+        brand_color: 'dark'
     entities:
-        User:
-            class: AppBundle\Entity\User
-            form:
-                fields:
-                - username
         Article:
             class: AppBundle\Entity\Article
             form:
                 fields:
-                    - Title
-                    - { property: 'description', type: 'ckeditor', type_options: { 'config': { 'toolbar': [ { name: 'styles', items: ['Bold', 'Italic', 'BulletedList', 'Link'] } ] } } }
-        # - AppBundle\Entity\Product
-        # - AppBundle\Entity\Category
-    site_name: '<img src="../img/logo.png" />'
-    design:
-        menu:
-        brand_color: '#FFD2E6'
-        color_scheme: 'light'   
-        assets:
-            css:
-                # HTTP protocol-relative URL
-                - '//example.org/css/admin1.css'
-                # absolute non-secure URL
-                - 'http://example.org/css/admin2.css'
-                # absolute secure URL
-                - 'https://example.org/css/admin3.css'
-                # absolute internal bundle URL
-                - '/bundles/user/css/admin4.css'
-                # relative internal bundle URL
-                - 'bundles/app/css/admin5.css'
-            js:
-                # this option works exactly the same as the 'css' option
-                - '//example.org/js/admin1.js'
-                - 'http://example.org/js/admin2.js'
-                - 'https://example.org/js/admin3.js'
-                - '/bundles/user/js/admin4.js'
-                - 'bundles/app/js/admin5.js'   
-
-ivory_ck_editor:
-    input_sync: true
-    default_config: basic_config
-    # configs:
-    #     base_config:
-    #         toolbar:
-    #             - { name: "styles", items: ['Bold', 'Italic', 'BulletedList', 'Link'] }
-    configs:
-        # full_config:
-        #     jquery: true
-        #     height: '900px'
-        #     language: fr
-        #     # filebrowserBrowseRoute: elfinder
-        #     filebrowserBrowseRouteParameters: []
-        #     extraPlugins: 'lineutils,widget,dialog,codesnippet,widgetselection'
-        basic_config:
-            jquery: true
-            heihgt: '250px'
-            language: fr
-            toolbar: basic
+                    - titre
+                    - { property: 'contenu', type: 'ckeditor' }
+                    - video
+                    - rubrique
+                    - { property: 'subRubrique', label: 'Sous-rubrique'}
+                    - { property: 'imageFile', type: 'file' }
+            list:
+                max_results: 30
+                fields:
+                    - 'titre'
+                    - { property: 'image', template: 'vich_uploader_image.html.twig' }
+                    - { property: 'datePost', label: 'Date'}
+            show:
+                fields:
+                    - titre
+                    - { property: 'datePost', label: 'Date'}
+                    - contenu
+                    - video
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }   
+        Rubrique:
+            class: AppBundle\Entity\Rubrique
+            show:
+                fields:
+                    - nom
+            list:
+                fields:
+                    - nom
+            form:    
+                fields:
+                    - nom
+        Sous_rubrique:
+            class: AppBundle\Entity\SubRubric
+            show:
+                fields:
+                    - nom
+        Utilisateur:
+            class: AppBundle\Entity\User
+        Info_Site:
+            class: AppBundle\Entity\SiteInfo

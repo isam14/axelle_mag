@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,7 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
+ * @Vich\Uploadable
  */
+
 class Article
 {
     /**
@@ -24,23 +27,23 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     * @ORM\Column(name="titre", type="string", length=255)
      */
-    private $title;
+    private $titre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="contenu", type="text")
      */
-    private $description;
+    private $contenu;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="datePost", type="datetime")
      */
-    private $date;
+    private $datePost;
 
     /**
      * @var string
@@ -49,16 +52,32 @@ class Article
      */
     private $image;
 
+     /**
+     * @Vich\UploadableField(mapping="article_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
     /**
      * @var string
      *
-     * @ORM\Column(name="imageFile", type="string", length=255)
+     * @ORM\Column(name="video", type="string", length=255)
      */
-    private $imageFile;
-
+    private $video;
 
     /**
-     * Get id.
+     * @ORM\ManyToOne(targetEntity="Rubrique", inversedBy="articles")
+     * @ORM\JoinColumn(name="rubrique_id", referencedColumnName="id")
+     */
+    private $rubrique;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SubRubric", inversedBy="articles")
+     * @ORM\JoinColumn(name="sub_rubrique_id", referencedColumnName="id")
+     */
+    private $subRubrique;
+    
+    /**
+     * Get id
      *
      * @return int
      */
@@ -68,79 +87,79 @@ class Article
     }
 
     /**
-     * Set title.
+     * Set titre
      *
-     * @param string $title
+     * @param string $titre
      *
      * @return Article
      */
-    public function setTitle($title)
+    public function setTitre($titre)
     {
-        $this->title = $title;
+        $this->titre = $titre;
 
         return $this;
     }
 
     /**
-     * Get title.
+     * Get titre
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitre()
     {
-        return $this->title;
+        return $this->titre;
     }
 
     /**
-     * Set description.
+     * Set contenu
      *
-     * @param string $description
+     * @param string $contenu
      *
      * @return Article
      */
-    public function setDescription($description)
+    public function setContenu($contenu)
     {
-        $this->description = $description;
+        $this->contenu = $contenu;
 
-        return $this;
+      return $this;
     }
 
     /**
-     * Get description.
+     * Get contenu
      *
      * @return string
      */
-    public function getDescription()
+    public function getContenu()
     {
-        return $this->description;
+        return $this->contenu;
     }
 
     /**
-     * Set date.
+     * Set datePost
      *
-     * @param \DateTime $date
+     * @param \DateTime $datePost
      *
      * @return Article
      */
-    public function setDate($date)
+    public function setDatePost($datePost)
     {
-        $this->date = $date;
+        $this->datePost = $datePost;
 
         return $this;
     }
 
     /**
-     * Get date.
+     * Get datePost
      *
      * @return \DateTime
      */
-    public function getDate()
+    public function getDatePost()
     {
-        return $this->date;
+        return $this->datePost;
     }
 
     /**
-     * Set image.
+     * Set image
      *
      * @param string $image
      *
@@ -154,7 +173,7 @@ class Article
     }
 
     /**
-     * Get image.
+     * Get image
      *
      * @return string
      */
@@ -164,24 +183,85 @@ class Article
     }
 
     /**
-     * Set imageFile.
+     * Set video
      *
-     * @param string $imageFile
+     * @param string $video
      *
      * @return Article
      */
-    public function setImageFile($imageFile)
+    public function setVideo($video)
     {
-        $this->imageFile = $imageFile;
+        $this->video = $video;
 
         return $this;
     }
 
     /**
-     * Get imageFile.
+     * Get video
      *
      * @return string
      */
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
+    /**
+     * Set rubrique
+     *
+     * @param \AppBundle\Entity\Rubrique $rubrique
+     *
+     * @return Article
+     */
+    public function setRubrique(\AppBundle\Entity\Rubrique $rubrique = null)
+    {
+        $this->rubrique = $rubrique;
+
+        return $this;
+    }
+
+    /**
+     * Get rubrique
+     *
+     * @return \AppBundle\Entity\Rubrique
+     */
+    public function getRubrique()
+    {
+        return $this->rubrique;
+    }
+
+    /**
+     * Set subRubrique
+     *
+     * @param \AppBundle\Entity\SubRubric $subRubrique
+     *
+     * @return Article
+     */
+    public function setSubRubrique(\AppBundle\Entity\SubRubric $subRubrique = null)
+    {
+        $this->subRubrique = $subRubrique;
+
+        return $this;
+    }
+
+    /**
+     * Get subRubrique
+     *
+     * @return \AppBundle\Entity\SubRubric
+     */
+    public function getSubRubrique()
+    {
+        return $this->subRubrique;
+    }
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+    }
+
     public function getImageFile()
     {
         return $this->imageFile;
