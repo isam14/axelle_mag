@@ -151,7 +151,17 @@ vich_uploader:
 #EasyAdminBundle
 easy_admin:
     entities:
-        - AppBundle\Entity\User
+        User:
+            class: AppBundle\Entity\User
+            form:
+                fields:
+                - username
+        Article:
+            class: AppBundle\Entity\Article
+            form:
+                fields:
+                    - Title
+                    - { property: 'description', type: 'ckeditor', type_options: { 'config': { 'toolbar': [ { name: 'styles', items: ['Bold', 'Italic', 'BulletedList', 'Link'] } ] } } }
         # - AppBundle\Entity\Product
         # - AppBundle\Entity\Category
     site_name: '<img src="../img/logo.png" />'
@@ -177,4 +187,25 @@ easy_admin:
                 - 'http://example.org/js/admin2.js'
                 - 'https://example.org/js/admin3.js'
                 - '/bundles/user/js/admin4.js'
-                - 'bundles/app/js/admin5.js'    
+                - 'bundles/app/js/admin5.js'   
+
+ivory_ck_editor:
+    input_sync: true
+    default_config: basic_config
+    # configs:
+    #     base_config:
+    #         toolbar:
+    #             - { name: "styles", items: ['Bold', 'Italic', 'BulletedList', 'Link'] }
+    configs:
+        # full_config:
+        #     jquery: true
+        #     height: '900px'
+        #     language: fr
+        #     # filebrowserBrowseRoute: elfinder
+        #     filebrowserBrowseRouteParameters: []
+        #     extraPlugins: 'lineutils,widget,dialog,codesnippet,widgetselection'
+        basic_config:
+            jquery: true
+            heihgt: '250px'
+            language: fr
+            toolbar: basic
