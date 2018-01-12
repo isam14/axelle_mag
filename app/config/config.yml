@@ -7,7 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-
+    app.path.article_images: /uploads/images/articles
 framework:
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
@@ -147,3 +147,70 @@ assetic:
 #Vich
 vich_uploader:
     db_driver: orm
+    mappings:
+        article_images:
+            uri_prefix:         '%app.path.article_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/articles'
+
+
+ivory_ck_editor:
+   configs:
+       article:
+           toolbar: "tool_article"
+   toolbars:
+       configs:
+           tool_article: [ "@texte",  "@puce" , "@other", "@web" ]
+       items:
+           texte: [ 'Bold', 'Italic', 'Underline' ,'TextColor' ]
+           puce:     [ 'NumberedList', 'BulletedList']
+           other:     ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+           web: ['Link', 'Unlink','Source']
+
+easy_admin:
+    site_name: '<img src="/img/logowhite.png" alt="Logo" />'
+    design:
+        brand_color: 'dark'
+    entities:
+        Article:
+            class: AppBundle\Entity\Article
+            form:
+                fields:
+                    - titre
+                    - { property: 'contenu', type: 'ckeditor' }
+                    - video
+                    - rubrique
+                    - { property: 'subRubrique', label: 'Sous-rubrique'}
+                    - { property: 'imageFile', type: 'file' }
+            list:
+                max_results: 30
+                fields:
+                    - 'titre'
+                    - { property: 'image', template: 'vich_uploader_image.html.twig' }
+                    - { property: 'datePost', label: 'Date'}
+            show:
+                fields:
+                    - titre
+                    - { property: 'datePost', label: 'Date'}
+                    - contenu
+                    - video
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }   
+        Rubrique:
+            class: AppBundle\Entity\Rubrique
+            show:
+                fields:
+                    - nom
+            list:
+                fields:
+                    - nom
+            form:    
+                fields:
+                    - nom
+        Sous_rubrique:
+            class: AppBundle\Entity\SubRubric
+            show:
+                fields:
+                    - nom
+        Utilisateur:
+            class: AppBundle\Entity\User
+        Info_Site:
+            class: AppBundle\Entity\SiteInfo
