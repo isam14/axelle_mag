@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
+
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -120,7 +121,7 @@ class Article
     {
         $this->contenu = $contenu;
 
-        return $this;
+      return $this;
     }
 
     /**
