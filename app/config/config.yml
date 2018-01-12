@@ -167,9 +167,11 @@ ivory_ck_editor:
            web: ['Link', 'Unlink','Source']
 
 easy_admin:
-    site_name: '<img src="/img/logowhite.png" alt="Logo" />'
+    site_name: '<img src="/img/logo.png" alt="Logo Axelle Mag" />'
     design:
-        brand_color: 'dark'
+        color_scheme: 'light'
+        brand_color: '#FCF0F0'
+        # brand_color: 'dark'
     entities:
         Article:
             class: AppBundle\Entity\Article
