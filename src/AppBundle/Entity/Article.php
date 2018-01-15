@@ -62,13 +62,13 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="video", type="string", length=255)
+     * @ORM\Column(name="video", type="string", length=255, nullable=true   )
      */
     private $video;
 
     /**
      * @ORM\ManyToOne(targetEntity="Rubrique", inversedBy="articles")
-     * @ORM\JoinColumn(name="rubrique_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="rubrique_id", referencedColumnName="id", nullable=false)
      */
     private $rubrique;
 
