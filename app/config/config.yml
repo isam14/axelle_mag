@@ -180,7 +180,6 @@ easy_admin:
                     - titre
                     - { property: 'contenu', type: 'ckeditor' }
                     - video
-                    - rubrique
                     - { property: 'subRubrique', label: 'Sous-rubrique'}
                     - { property: 'imageFile', type: 'file' }
             list:
@@ -212,12 +211,14 @@ easy_admin:
             show:
                 fields:
                     - name
+                    - rubrique
             list:
                 fields:
                     - name
             form:    
                 fields:
                     - name
+                    - rubrique
         Utilisateur:
             class: AppBundle\Entity\User
         Info_Site:
