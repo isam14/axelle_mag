@@ -7,14 +7,14 @@
 </div>
 
 <div class="row noPadding"><h3>Dernière Actus</h3></div>
-{% for i in 0..2 %}
+{% for articlesRightMenu in articlesRightMenu %}
     <div class="row sideMenuLink">
-        <a class="" href="#">
-            <img class="col-xs-4 img-responsive" src="https://images.genius.com/b2f57f6b6f138edd6eed8c79aeffde30.1000x1000x1.jpg" alt="">
+        <a href="{{ path('article', {'id': articlesRightMenu.id}) }}">
+            <img class="col-xs-4 img-responsive" src="/uploads/images/articles/{{ articlesRightMenu.image }}" alt="">
             <h4 class="col-xs-8 text-left">
-                {{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'|length > 35 ?
-                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'|slice(0, 35) ~ '...' :
-                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'  }}
+                {{ articlesRightMenu.titre|length > 35 ?
+                articlesRightMenu.titre|slice(0, 35) ~ '...' :
+                articlesRightMenu.titre  }}
             </h4>
         </a>
     </div>

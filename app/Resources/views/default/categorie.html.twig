@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% set catId = app.request.pathinfo[1:] %}
+{#{% set catId = app.request.pathinfo[1:] %}#}
 {% block body %}
     <div class="row">
         <div class="col-md-12 articleImage crop">
@@ -15,7 +15,7 @@
         {#<h1 class="lowMargTop">Actualités</h1>#}
         {% for i in 0..15 %}
             <div class="col-xs-3 articleImage crop">
-                <a href="{{ path('article', {'catId' : catId, 'id': i}) }}">
+                <a href="{{ path('article', {'id': i}) }}">
                     <img class="imageContained cropedImage" src="http://api.adorable.io/avatars/500/{{ i+i }}" alt="">
                     <h4 class="articleCaption">
                         {{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'|length > 35 ?
