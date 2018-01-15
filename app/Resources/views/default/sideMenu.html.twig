@@ -12,8 +12,8 @@
         <a href="{{ path('article', {'id': articlesRightMenu.id}) }}">
             <img class="col-xs-4 img-responsive" src="/uploads/images/articles/{{ articlesRightMenu.image }}" alt="">
             <h4 class="col-xs-8 text-left">
-                {{ articlesRightMenu.titre|length > 35 ?
-                articlesRightMenu.titre|slice(0, 35) ~ '...' :
+                {{ articlesRightMenu.titre|length > 15 ?
+                articlesRightMenu.titre|slice(0, 15) ~ '...' :
                 articlesRightMenu.titre  }}
             </h4>
         </a>
