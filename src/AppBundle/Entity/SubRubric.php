@@ -28,6 +28,12 @@ class SubRubric
      */
     private $name;
 
+     /**
+     * @ORM\ManyToOne(targetEntity="Rubrique", inversedBy="subRubriques")
+     * @ORM\JoinColumn(name="rubrique_id", referencedColumnName="id", nullable=true)
+     */
+    private $rubrique;
+
     /**
      * @ORM\OneToMany(targetEntity="Article", mappedBy="subRubrique")
      */
@@ -106,5 +112,29 @@ class SubRubric
     public function getArticles()
     {
         return $this->articles;
+    }
+
+    /**
+     * Set rubrique
+     *
+     * @param \AppBundle\Entity\Rubrique $rubrique
+     *
+     * @return SubRubric
+     */
+    public function setRubrique(\AppBundle\Entity\Rubrique $rubrique = null)
+    {
+        $this->rubrique = $rubrique;
+
+        return $this;
+    }
+
+    /**
+     * Get rubrique
+     *
+     * @return \AppBundle\Entity\Rubrique
+     */
+    public function getRubrique()
+    {
+        return $this->rubrique;
     }
 }

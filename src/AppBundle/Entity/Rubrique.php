@@ -30,13 +30,14 @@ class Rubrique
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="rubrique")
+     * @ORM\OneToMany(targetEntity="SubRubric", mappedBy="rubrique")
      */
-    private $articles;
+    private $subRubriques;
+   
     
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
+        $this->subRubriques = new ArrayCollection();
     }
     public function __toString(){
         return $this->getNom();

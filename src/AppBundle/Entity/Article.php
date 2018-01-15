@@ -66,11 +66,6 @@ class Article
      */
     private $video;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Rubrique", inversedBy="articles")
-     * @ORM\JoinColumn(name="rubrique_id", referencedColumnName="id", nullable=false)
-     */
-    private $rubrique;
 
     /**
      * @ORM\ManyToOne(targetEntity="SubRubric", inversedBy="articles")
