@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Rubrique;
+use AppBundle\Entity\SubRubric;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +18,20 @@ class DefaultController extends Controller
             ->articlesRightMenu();
     }
 
+    private function sousRubriqueLeftMenu()
+    {
+        return  $this->getDoctrine()
+            ->getRepository(SubRubric::class)
+            ->subRubriqueLeftMenu();
+    }
+
+    private function categorieLeftMenu()
+    {
+        return  $this->getDoctrine()
+            ->getRepository(Rubrique::class)
+            ->findAll();
+    }
+
     /**
      * @Route("/", name="index")
      */
@@ -23,6 +39,8 @@ class DefaultController extends Controller
     {
         return $this->render('default/index.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
+            'categoriesLeftMenu' => $this->categorieLeftMenu(),
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
         ));
     }
 
@@ -30,11 +48,12 @@ class DefaultController extends Controller
      * @Route ("/categorie/{catId}", name="categorie")
      */
 
-    public function categorieAction($catId)
-    {
-        return $this->render('default/categorie.html.twig', array(
-            'articlesRightMenu' => $this->articleRightMenu(),
-        ));
+    public function categorieAction()
+    {return $this->render('default/categorie.html.twig', array(
+        'articlesRightMenu' => $this->articleRightMenu(),
+        'categoriesLeftMenu' => $this->categorieLeftMenu(),
+        'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
+    ));
     }
 
     /**
@@ -47,7 +66,8 @@ class DefaultController extends Controller
             ->getRepository(Article::class)->find($id);
         return $this->render('default/article.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
-            'article' => $article
+            'categoriesLeftMenu' => $this->categorieLeftMenu(),
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
         ));
     }
 
@@ -59,6 +79,8 @@ class DefaultController extends Controller
     {
         return $this->render('default/search.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
+            'categoriesLeftMenu' => $this->categorieLeftMenu(),
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
         ));
     }
 }

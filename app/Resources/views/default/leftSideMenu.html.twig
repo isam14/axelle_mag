@@ -22,35 +22,50 @@
                     <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                 </form>
             </li>
-            <li class="dropdown categorie">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown">Actualités <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Les actus</li>
-                    <li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'actualite'}) }}">Toutes les actus</a></li>
-                    <li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'politique'}) }}">Politique</a></li>
-                    <li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'societe'}) }}">Société</a></li>
-                    <li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'culture'}) }}">Culture</a></li>
-                </ul>
-            </li>
-            <li class="categorie">
-                <a href="{{ path('categorie', {'catId': 'reportage'}) }}">Nos reportages</a>
-            </li>
-            <li class="categorie">
-                <a href="{{ path('categorie', {'catId': 'tat'}) }}">Rendez-vous avec elles</a>
-            </li>
-            <li class="dropdown categorie">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown">Chroniques <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Les chroniques</li>
-                    <li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'chronique'}) }}">Toutes les chroniques</a></li>
-                    <li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'humourhumeur'}) }}">Alienor VS Ségolène</a></li>
-                    <li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'chicencheap'}) }}">Chic en cheap</a></li>
-                    <li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'creerdesliens'}) }}">Politesse ou Polémique</a></li>
-                </ul>
-            </li>
-            <li class="categorie">
-                <a href="https://twitter.com/maridlcrmn">@Suivre Axelle</a>
-            </li>
+            {#<li class="dropdown categorie">#}
+            {#<a href="" class="dropdown-toggle" data-toggle="dropdown">Actualités <span class="caret"></span></a>#}
+            {#<ul class="dropdown-menu" role="menu">#}
+            {#<li class="dropdown-header">Les actus</li>#}
+            {#<li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'actualite'}) }}">Toutes les actus</a></li>#}
+            {#<li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'politique'}) }}">Politique</a></li>#}
+            {#<li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'societe'}) }}">Société</a></li>#}
+            {#<li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'culture'}) }}">Culture</a></li>#}
+            {#</ul>#}
+            {#</li>#}
+
+            {% for categorie in categoriesLeftMenu %}
+                <li class="dropdown categorie">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ categorie.nom }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-header">Les {{ categorie.nom }}</li>
+                        {% for sousRubrique in categorie.subRubriques %}
+                            <li class="sousCategorie"><a href="{{ path('categorie', {'catId': sousRubrique.id }) }}">{{ sousRubrique.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+
+            {% for sousRubrique in sousRubriqueLeftMenu %}
+                <li class="categorie">
+                    <a href="{{ path('categorie', {'catId': sousRubrique.id}) }}">{{ sousRubrique }}</a>
+                </li>
+            {% endfor %}
+            {#<li class="categorie">#}
+            {#<a href="{{ path('categorie', {'catId': 'tat'}) }}">Rendez-vous avec elles</a>#}
+            {#</li>#}
+            {#<li class="dropdown categorie">#}
+            {#<a href="" class="dropdown-toggle" data-toggle="dropdown">Chroniques <span class="caret"></span></a>#}
+            {#<ul class="dropdown-menu" role="menu">#}
+            {#<li class="dropdown-header">Les chroniques</li>#}
+            {#<li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'chronique'}) }}">Toutes les chroniques</a></li>#}
+            {#<li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'humourhumeur'}) }}">Alienor VS Ségolène</a></li>#}
+            {#<li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'chicencheap'}) }}">Chic en cheap</a></li>#}
+            {#<li class="sousCategorie"><a href="{{ path('categorie', {'catId': 'creerdesliens'}) }}">Politesse ou Polémique</a></li>#}
+            {#</ul>#}
+            {#</li>#}
+            {#<li class="categorie">#}
+            {#<a href="https://twitter.com/maridlcrmn">@Suivre Axelle</a>#}
+            {#</li>#}
         </ul>
     </nav>
     <!-- /#sidebar-wrapper -->
