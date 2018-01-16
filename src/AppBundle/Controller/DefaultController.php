@@ -45,7 +45,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route ("/{catId}", name="categorie")
+     * @Route ("/categorie/{catId}", name="categorie")
      */
 
     public function categorieAction()
@@ -57,11 +57,13 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/article/{id}", name="article")
+     * @Route("/article/{id}", name="article", requirements={"id"="\d+"})
      */
 
-    public function articleAction()
+    public function articleAction($id)
     {
+        $article = $this->getDoctrine()
+            ->getRepository(Article::class)->find($id);
         return $this->render('default/article.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
