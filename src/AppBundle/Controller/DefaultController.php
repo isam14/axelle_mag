@@ -27,23 +27,27 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route ("/{catId}", name="categorie")
+     * @Route ("/categorie/{catId}", name="categorie")
      */
 
-    public function categorieAction()
-    {return $this->render('default/categorie.html.twig', array(
+    public function categorieAction($catId)
+    {
+        return $this->render('default/categorie.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
         ));
     }
 
     /**
-     * @Route("/article/{id}", name="article")
+     * @Route("/article/{id}", name="article", requirements={"id"="\d+"})
      */
 
-    public function articleAction()
+    public function articleAction($id)
     {
+        $article = $this->getDoctrine()
+            ->getRepository(Article::class)->find($id);
         return $this->render('default/article.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
+            'article' => $article
         ));
     }
 

@@ -76,37 +76,9 @@ class Rubrique
         return $this->nom;
     }
 
-    /**
-     * Add article
-     *
-     * @param \AppBundle\Entity\Article $article
-     *
-     * @return Rubrique
-     */
-    public function addArticle(\AppBundle\Entity\Article $article)
+    public function getSubRubriques()
     {
-        $this->articles[] = $article;
-
-        return $this;
+        return $this->subRubriques;
     }
-
-    /**
-     * Remove article
-     *
-     * @param \AppBundle\Entity\Article $article
-     */
-    public function removeArticle(\AppBundle\Entity\Article $article)
-    {
-        $this->articles->removeElement($article);
-    }
-
-    /**
-     * Get articles
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getArticles()
-    {
-        return $this->articles;
-    }
+    
 }

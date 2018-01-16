@@ -1,19 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    {% set title = 'Lorem This Is a Test' %}
 
     <div class="row">
-        <div class="col-md-12 articleImage crop">
-            <img class="imageContained" src="http://api.adorable.io/avatars/5000/1" alt="">
-            <h4 class="articleCaption">{{ title }}</h4>
+        <h2>{{ article.titre }}</h2>
+        <div class='col-lg-offset-1 col-lg-10'>
+            <img class="img-responsive" src="/uploads/images/articles/{{ article.image }}" alt="image article">
+            {{ article.contenu|raw }}
         </div>
     </div>
-    <div class="row margTop">
-        <div class="col-xs-3 articleImage crop">
-            <a href="{{ path('index') }}">
-                <img class="imageContained cropedImage" src="http://api.adorable.io/avatars/500/1" alt="">
-                <h4 class="articleCaption">Lorem ipsum dolor sit amet</h4>
-            </a>
-        </div>
-    </div>
+
 {% endblock %}
