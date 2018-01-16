@@ -7,14 +7,14 @@
 </div>
 
 <div class="row noPadding"><h3>Dernière Actus</h3></div>
-{% for articlesRightMenu in articlesRightMenu %}
+{% for article in articlesRightMenu %}
     <div class="row sideMenuLink">
-        <a href="{{ path('article', {'id': articlesRightMenu.id}) }}">
-            <img class="col-xs-4 img-responsive" src="/uploads/images/articles/{{ articlesRightMenu.image }}" alt="">
+        <a href="{{ path('article', {'id': article.id}) }}">
+            <img class="col-xs-4 img-responsive" src="/uploads/images/articles/{{ article.image }}" alt="">
             <h4 class="col-xs-8 text-left">
-                {{ articlesRightMenu.titre|length > 15 ?
-                articlesRightMenu.titre|slice(0, 15) ~ '...' :
-                articlesRightMenu.titre  }}
+                {{ article.titre|length > 15 ?
+                article.titre|slice(0, 15) ~ '...' :
+                article.titre  }}
             </h4>
         </a>
     </div>

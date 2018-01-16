@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class SubRubricRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function subRubriqueLeftMenu()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT sr FROM AppBundle:SubRubric sr WHERE sr.rubrique is null'
+            )
+            ->getResult();
+    }
 }
