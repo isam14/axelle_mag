@@ -121,12 +121,6 @@ button, button:focus {
     padding: 0.85em 0.5em;
 }
 
-.col-xs-6 h4.articleCaption {
-    position: absolute;
-    width: 100%;
-    padding: 0.5em 0.5em;
-}
-
 .articleCaption {
     position: absolute;
     bottom: 0;
@@ -137,6 +131,24 @@ button, button:focus {
     color: white;
     background-color: rgba(0,0,0,0.75);
     padding: 0.3em 0.5em;
+}
+
+.articleRubriqueCaption {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    /*height: 50px;*/
+    margin-bottom: 0;
+    width: auto;
+    color: white;
+    background-color: rgba(0,0,0,0.85);
+    border-radius: 25px;
+    padding: 0.15em 0.5em 0.1em;
+}
+
+.articleRubriqueCaption a, a:visited, a:focus {
+    color: white;
+    text-decoration: none;
 }
 
 .crop {
@@ -254,3 +266,4 @@ button, button:focus {
 .span{
     font-weight: bold;
 }
+

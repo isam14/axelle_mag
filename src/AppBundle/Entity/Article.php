@@ -72,9 +72,15 @@ class Article
      * @ORM\JoinColumn(name="sub_rubrique_id", referencedColumnName="id")
      */
     private $subRubrique;
-    
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
     public function __construct(){
         $this->setDatePost(new \DateTime('now'));
+        $this->updatedAt = new \DateTime('now');
     }
     /**
      * Get id
@@ -207,30 +213,6 @@ class Article
     }
 
     /**
-     * Set rubrique
-     *
-     * @param \AppBundle\Entity\Rubrique $rubrique
-     *
-     * @return Article
-     */
-    public function setRubrique(\AppBundle\Entity\Rubrique $rubrique = null)
-    {
-        $this->rubrique = $rubrique;
-
-        return $this;
-    }
-
-    /**
-     * Get rubrique
-     *
-     * @return \AppBundle\Entity\Rubrique
-     */
-    public function getRubrique()
-    {
-        return $this->rubrique;
-    }
-
-    /**
      * Set subRubrique
      *
      * @param \AppBundle\Entity\SubRubric $subRubrique
@@ -253,10 +235,15 @@ class Article
     {
         return $this->subRubrique;
     }
+
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
 
+
+        if($image){
+            $this->updatedAt = new \DateTime('now');
+        }
         // VERY IMPORTANT:
         // It is required that at least one field changes if you are using Doctrine,
         // otherwise the event listeners won't be called and the file is lost
@@ -266,4 +253,14 @@ class Article
     {
         return $this->imageFile;
     }
+    public function getEmbedVideo(){
+        if(! empty($this->getVideo())){
+            $videoId = explode('/', $this->getVideo());
+            
+            return '<iframe src="https://player.vimeo.com/video/'.$videoId[count($videoId)-1].'" width="640" height="360" f rameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+        }
+            return '';
+        }
+
 }
+

@@ -3,7 +3,7 @@
 namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-
+use AppBundle\Entity\SubRubric; 
 
 /**
  * ArticleRepository
@@ -20,6 +20,16 @@ class ArticleRepository extends EntityRepository
                 'SELECT a FROM AppBundle:Article a ORDER BY a.id DESC'
             )
             ->setMaxResults(3)
+            ->getResult();
+    }
+
+    public function articlesIndex()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a FROM AppBundle:Article a ORDER BY a.id DESC'
+            )
+            ->setMaxResults(20)
             ->getResult();
     }
 }

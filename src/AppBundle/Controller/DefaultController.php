@@ -32,15 +32,23 @@ class DefaultController extends Controller
             ->findAll();
     }
 
+    private function articlesIndex()
+    {
+        return $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->articlesIndex();
+    }
+
     /**
      * @Route("/", name="index")
      */
-    public function indexAction(Request $request)
+    public function indexAction(\Swift_Mailer $mailer)
     {
         return $this->render('default/index.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
-            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'articlesIndex' => $this->articlesIndex(),
         ));
     }
 
@@ -62,11 +70,17 @@ class DefaultController extends Controller
      * @Route ("/categorie/{catId}", name="categorie")
      */
 
-    public function categorieAction()
-    {return $this->render('default/categorie.html.twig', array(
+    public function categorieAction($catId)
+    {
+       $rubrique = $this->getDoctrine()
+            ->getRepository(SubRubric::class)
+            ->find($catId);
+
+        return $this->render('default/categorie.html.twig', array(
         'articlesRightMenu' => $this->articleRightMenu(),
         'categoriesLeftMenu' => $this->categorieLeftMenu(),
-        'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
+        'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+        'rubrique' => $rubrique
     ));
     }
 
@@ -78,10 +92,12 @@ class DefaultController extends Controller
     {
         $article = $this->getDoctrine()
             ->getRepository(Article::class)->find($id);
+
         return $this->render('default/article.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
-            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'article' => $article
         ));
     }
 
@@ -95,6 +111,33 @@ class DefaultController extends Controller
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
             'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
+        ));
+    }
+
+    /**
+     * @Route("/subscribe", name="subscribe")
+     */
+    public function subscribeAction(Request $request, \Swift_Mailer $mailer)
+    {
+
+        $request = htmlspecialchars($_POST['newsLetterMail']);
+//        $message = (new \Swift_Message('Hello Email'))
+//            ->setFrom('tira.nicolas@gmail.com')
+//            ->setTo('tira.nicolas@gmail.com')
+//            ->setBody(
+//                $this->renderView(
+//                    'Emails/subscribedNewsletter.html.twig',
+//                    array('name' => 'test')
+//                ),
+//                'text/html'
+//            );
+//        $this->get('mailer')->send($message);
+
+        return $this->render('default/index.html.twig', array(
+            'articlesRightMenu' => $this->articleRightMenu(),
+            'categoriesLeftMenu' => $this->categorieLeftMenu(),
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'test' => $request,
         ));
     }
 }

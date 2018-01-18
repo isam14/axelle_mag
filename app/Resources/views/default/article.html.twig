@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-
     <div class="row">
-        <h2>{{ article.titre }}</h2>
-        <div class='col-lg-offset-1 col-lg-10'>
+        
+        <div class='col-lg-offset-1 col-lg-10  borderBottom'>
+        <div class='page-header'>
+            <h1>{{ article.titre }}</h1>
+        </div>
             <img class="center-block img-responsive" src="/uploads/images/articles/{{ article.image }}" alt="image article">
-            {{ article.contenu|raw }}
+            <div>{{ article.contenu|raw }}</div>
+            {{ article.getEmbedVideo()|raw }}
+            <span class='pull-right'> Publié le   {{ article.datePost.format('d/m/Y') }}</span>
         </div>
     </div>
 
