@@ -40,6 +40,8 @@ a.categorieLink:hover {
 }
 
 .itemTopMenu a, .itemTopMenu a:active, .itemTopMenu a:visited {
+    text-decoration: none;
+    font-weight: 900;
     color: black;
     padding-top: 0.3em;
 }
@@ -156,12 +158,12 @@ button, button:focus {
     margin-bottom: 0;
     width: auto;
     color: white;
-    background-color: rgba(0,0,0,0.85);
+    background-color: rgba(0,0,0,0.75);
     border-radius: 25px;
-    padding: 0.15em 0.5em 0.1em;
+    padding: 0.25em 0.5em 0.35em;
 }
 
-.articleRubriqueCaption a, a:visited, a:focus {
+.articleRubriqueCaption a, .articleRubriqueCaption a:visited, .articleRubriqueCaption a:focus {
     color: white;
     text-decoration: none;
 }
@@ -227,7 +229,6 @@ button, button:focus {
 
 .mentions {
     background-color: #bfbfbf;
-    /*background: linear-gradient(white, #4450ba);*/
     padding: 1em 0 0.5em 0;
 }
 
@@ -275,6 +276,27 @@ button, button:focus {
     font-family: 'Dancing Script', cursive;
 }
 
+.titleCatAndArt {
+    font-weight: 900;
+    font-family: 'Dancing Script', cursive;
+}
+
 #page {
     margin-bottom: 165px;
+}
+
+.img-sideMenu {
+    width: 75px;
+    height: 50px;
+}
+
+.inlined {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.black {
+    color: black;
+
 }
