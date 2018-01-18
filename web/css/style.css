@@ -251,3 +251,6 @@ button, button:focus {
 .text-logo{
     /* padding-top: 1%; */
 }
+.span{
+    font-weight: bold;
+}
