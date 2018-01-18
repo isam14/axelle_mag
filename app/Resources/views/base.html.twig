@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Axelle Magazine{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -13,34 +13,38 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body class="text-center">
+<div id="page">
 
-<div class="container">
-    <div class="col-xs-12 col-md-9">
-        {% include 'default/header.html.twig' %}
-    </div>
-</div>
-
-<div class="staticMenu">
-    {% include 'default/leftSideMenu.html.twig' %}
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-9">
-            {% block body %}{% endblock %}
+    <div class="container">
+        <div class="col-xs-12 col-md-9">
+            {% include 'default/header.html.twig' %}
         </div>
-        <div class="col-sm-offset-9 col-md-3 hidden-sm hidden-xs">
-            <div class="staticSide borderTop borderBottom">
-                {% include 'default/sideMenu.html.twig' %}
+    </div>
+
+    <div class="staticMenu">
+        {% include 'default/leftSideMenu.html.twig' %}
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                {% block body %}{% endblock %}
+            </div>
+            <div class="col-sm-offset-9 col-md-3 hidden-sm hidden-xs">
+                <div class="staticSide borderTop borderBottom">
+                    {% include 'default/sideMenu.html.twig' %}
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container-fluid margTop">
-    {% include 'default/footer.html.twig' %}
+<div id="footer">
+    <div class="navbar navbar-default navbar-fixed-bottom container-fluid margTop">
+        {% include 'default/footer.html.twig' %}
+    </div>
 </div>
-
 
 {% block javascripts %}
     <script src="{{ asset('js/jquery.min.js') }}"></script>
