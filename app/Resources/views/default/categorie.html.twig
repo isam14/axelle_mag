@@ -6,20 +6,6 @@
     <div class='page-header'>
         <h1>{{ rubrique.name }}</h1>
     </div>
-    {% set firstA = rubrique.articles|last %}
-    <div class="row">
-        <div class="col-md-12 articleImage crop">
-            <a href="{{ path('article', {'id': firstA.id }) }}">
-                <img class="imageContained cropedImage" src="/uploads/images/articles/{{ firstA.image }}" alt="">
-                <h4 class="articleCaption">
-                    {{ firstA.titre|length > 75 ?
-                    firstA.titre|slice(0, 75) ~ '...' :
-                    firstA.titre  }}
-                </h4>
-            </a>
-        </div>
-    </div>
-
     <div class="row margTop">
         {#<h1 class="lowMargTop">Actualités</h1>#}
         {% for article in rubrique.articles|reverse %}
@@ -33,6 +19,19 @@
                             article.titre  }}
                         </h4>
                     </a>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col-md-12 articleImage crop">
+                        <a href="{{ path('article', {'id': article.id }) }}">
+                            <img class="imageContained cropedImage" src="/uploads/images/articles/{{ article.image }}" alt="">
+                            <h4 class="articleCaption">
+                                {{ article.titre|length > 75 ?
+                                article.titre|slice(0, 75) ~ '...' :
+                                article.titre  }}
+                            </h4>
+                        </a>
+                    </div>
                 </div>
             {% endif %}
         {% endfor %}
