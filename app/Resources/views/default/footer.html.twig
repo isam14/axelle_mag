@@ -4,8 +4,8 @@
             <h4 for="newsLetterMail"><strong>Pour recevoir la newsletter, inscrivez-vous !</strong></h4>
         </div>
         <div class="col-xs-6 text-left">
-            <form class="" action="" method="post">
-                <h4><input class="text-right" id="newLetterMail" name="newsLetterMail" type="email" placeholder="Mon email" required>
+            <form action="{{ path('subscribe') }}" method="post">
+                <h4><input class="text-right" id="newsLetterMail" name="newsLetterMail" type="email" placeholder="Mon email" required>
                     <button type="submit"><i class="fa fa-envelope" aria-hidden="true"></i></button></h4>
             </form>
         </div>

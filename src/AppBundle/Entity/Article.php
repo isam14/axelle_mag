@@ -253,6 +253,7 @@ class Article
     {
         return $this->subRubrique;
     }
+
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;

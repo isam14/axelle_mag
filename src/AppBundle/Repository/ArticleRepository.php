@@ -22,4 +22,14 @@ class ArticleRepository extends EntityRepository
             ->setMaxResults(3)
             ->getResult();
     }
+
+    public function articlesIndex()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a FROM AppBundle:Article a ORDER BY a.id DESC'
+            )
+            ->setMaxResults(20)
+            ->getResult();
+    }
 }
