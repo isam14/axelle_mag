@@ -53,6 +53,21 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/mentions", name="mentions" )
+     */
+    public function mentionsAction ()
+    {
+        return $this->render('default/mentions.html.twig', array(
+            'articlesRightMenu' => $this->articleRightMenu(),
+            'categoriesLeftMenu' => $this->categorieLeftMenu(),
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'ariclesIndex' => $this->articlesIndex()
+        ));
+    }
+
+
+
+    /**
      * @Route ("/categorie/{catId}", name="categorie")
      */
 
