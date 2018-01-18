@@ -72,9 +72,15 @@ class Article
      * @ORM\JoinColumn(name="sub_rubrique_id", referencedColumnName="id")
      */
     private $subRubrique;
-    
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
     public function __construct(){
         $this->setDatePost(new \DateTime('now'));
+        $this->updatedAt = new \DateTime('now');
     }
     /**
      * Get id
@@ -233,6 +239,10 @@ class Article
     {
         $this->imageFile = $image;
 
+
+        if($image){
+            $this->updatedAt = new \DateTime('now');
+        }
         // VERY IMPORTANT:
         // It is required that at least one field changes if you are using Doctrine,
         // otherwise the event listeners won't be called and the file is lost
