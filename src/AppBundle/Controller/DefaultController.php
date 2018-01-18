@@ -67,7 +67,8 @@ class DefaultController extends Controller
         return $this->render('default/article.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
-            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'article' => $article
         ));
     }
 
