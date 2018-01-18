@@ -1,16 +1,8 @@
-<div class="row">
-    <ul class="list-inline noPadding">
-        <li class="list-inline-item"><i class="fa fa-2x fa-facebook-square" aria-hidden="true"></i></li>
-        <li class="list-inline-item"><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></li>
-        <li class="list-inline-item"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></li>
-    </ul>
-</div>
-
 <div class="row noPadding"><h3>Dernière Actus</h3></div>
 {% for article in articlesRightMenu %}
     <div class="row sideMenuLink">
         <a href="{{ path('article', {'id': article.id}) }}">
-            <img class="col-xs-4 img-responsive" src="/uploads/images/articles/{{ article.image }}" alt="">
+            <img class="col-xs-4 img-responsive vertical" src="https://www.lusitane.fr/images/pierre-colonne-granit/colonne-granit-pierre-naturelle43.jpg" alt="">
             <h4 class="col-xs-8 text-left">
                 {{ article.titre|length > 15 ?
                 article.titre|slice(0, 15) ~ '...' :
