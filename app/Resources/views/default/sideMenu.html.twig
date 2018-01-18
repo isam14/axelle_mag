@@ -1,13 +1,17 @@
-<div class="row noPadding"><h3>Dernière Actus</h3></div>
+<div class="titleCatAndArt row noPadding">
+    <h3>Dernière Actus</h3>
+</div>
 {% for article in articlesRightMenu %}
-    <div class="row sideMenuLink">
+    <div class="row sideMenuLink titleCatAndArt">
         <a href="{{ path('article', {'id': article.id}) }}">
-            <img class="col-xs-4 img-responsive vertical" src="https://www.lusitane.fr/images/pierre-colonne-granit/colonne-granit-pierre-naturelle43.jpg" alt="">
-            <h4 class="col-xs-8 text-left">
-                {{ article.titre|length > 15 ?
-                article.titre|slice(0, 15) ~ '...' :
-                article.titre  }}
-            </h4>
+            <div class="inlined">
+                <img class="col-xs-4 img-sideMenu" src="{{ asset('/uploads/images/articles/') }}{{ article.image }}" alt="">
+                <h4 class="col-xs-8">
+                    {{ article.titre|length > 15 ?
+                    article.titre|slice(0, 15) ~ '...' :
+                    article.titre  }}
+                </h4>
+            </div>
         </a>
     </div>
 {% endfor %}
