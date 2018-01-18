@@ -259,3 +259,11 @@ button, button:focus {
     font-size:3em;
     font-family: 'Dancing Script', cursive;
 }
+
+.text-logo{
+    /* padding-top: 1%; */
+}
+.span{
+    font-weight: bold;
+}
+
