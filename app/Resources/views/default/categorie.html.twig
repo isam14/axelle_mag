@@ -2,14 +2,6 @@
 {#{% set catId = app.request.pathinfo[1:] %}#}
 {% block body %}
 {% set firstA = rubrique.articles|last %}
-    <div class="row">
-        <div class="col-md-12 articleImage crop">
-        <a href="{{ path('article', {'id': firstA.id }) }}">
-            <img class="imageContained" src="/uploads/images/articles/{{ firstA.image }}" alt="">
-            <h4 class="articleCaption"> {{ firstA.titre }}</h4>
-        </a>
-        </div>
-    </div>
 
     <div class="row margTop">
         {#<h1 class="lowMargTop">Actualités</h1>#}
@@ -22,6 +14,15 @@
                         {{ article.titre }}
                     </h4>
                 </a>
+            </div>
+            {% else %}
+            <div class="row">
+                <div class="col-md-12 articleImage crop">
+                <a href="{{ path('article', {'id': firstA.id }) }}">
+                    <img class="imageContained" src="/uploads/images/articles/{{ firstA.image }}" alt="">
+                    <h4 class="articleCaption"> {{ firstA.titre }}</h4>
+                </a>
+                </div>
             </div>
             {% endif %}
         {% endfor %}
