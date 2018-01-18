@@ -1,29 +1,27 @@
 {% extends 'base.html.twig' %}
 {#{% set catId = app.request.pathinfo[1:] %}#}
 {% block body %}
+{% set firstA = rubrique.articles|last %}
     <div class="row">
         <div class="col-md-12 articleImage crop">
-            <img class="imageContained" src="http://api.adorable.io/avatars/5000/1" alt="">
-            <h4 class="articleCaption">{{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|length > 75 ?
-                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|slice(0, 75) ~ '...' :
-                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'  }}
-            </h4>
+            <img class="imageContained" src="/uploads/images/articles/{{ firstA.image }}" alt="">
+            <h4 class="articleCaption"> {{ firstA.titre }}</h4>
         </div>
     </div>
 
     <div class="row margTop">
         {#<h1 class="lowMargTop">Actualités</h1>#}
-        {% for i in 0..15 %}
+        {% for article in rubrique.articles|reverse %}
+           {% if loop.first == false %}
             <div class="col-xs-3 articleImage crop">
-                <a href="{{ path('article', {'id': i}) }}">
-                    <img class="imageContained cropedImage" src="http://api.adorable.io/avatars/500/{{ i+i }}" alt="">
+                <a href="{{ path('article', {'id': article.id }) }}">
+                    <img class="imageContained cropedImage" src="/uploads/images/articles/{{ article.image }}" alt="image article">
                     <h4 class="articleCaption">
-                        {{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'|length > 35 ?
-                                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'|slice(0, 35) ~ '...' :
-                                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazf'  }}
+                        {{ article.titre }}
                     </h4>
                 </a>
             </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

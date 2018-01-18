@@ -207,30 +207,6 @@ class Article
     }
 
     /**
-     * Set rubrique
-     *
-     * @param \AppBundle\Entity\Rubrique $rubrique
-     *
-     * @return Article
-     */
-    public function setRubrique(\AppBundle\Entity\Rubrique $rubrique = null)
-    {
-        $this->rubrique = $rubrique;
-
-        return $this;
-    }
-
-    /**
-     * Get rubrique
-     *
-     * @return \AppBundle\Entity\Rubrique
-     */
-    public function getRubrique()
-    {
-        return $this->rubrique;
-    }
-
-    /**
      * Set subRubrique
      *
      * @param \AppBundle\Entity\SubRubric $subRubrique

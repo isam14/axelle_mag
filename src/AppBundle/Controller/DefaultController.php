@@ -48,11 +48,16 @@ class DefaultController extends Controller
      * @Route ("/categorie/{catId}", name="categorie")
      */
 
-    public function categorieAction()
-    {return $this->render('default/categorie.html.twig', array(
+    public function categorieAction($catId)
+    {
+       $rubrique = $this->getDoctrine()
+            ->getRepository(SubRubric::class)
+            ->find($catId);
+        return $this->render('default/categorie.html.twig', array(
         'articlesRightMenu' => $this->articleRightMenu(),
         'categoriesLeftMenu' => $this->categorieLeftMenu(),
-        'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
+        'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+        'rubrique' => $rubrique
     ));
     }
 
