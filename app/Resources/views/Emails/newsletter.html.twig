@@ -1,11 +1,9 @@
-<h3>You did it! You registered!</h3>
+<div style="text-align: center">
+    <img src="{{ absolute_url(asset('img/logo.png')) }}" alt="Logo" style="width: 300px; height: auto"><br>
+    <h1 style="margin-top: 10px">Bienvenue chez Axelle Magazine !</h1>
 
-Hi {{ name }}! You're successfully registered.
+    <h3>Vous recevez ce mail car vous vous êtes inscrits à notre newsletter.</h3>
 
-{# example, assuming you have a route named "login" #}
-To login, go to: <a href="{{ url('index') }}">Login</a>.
-
-Thanks!
-
-{# Makes an absolute URL to the /images/logo.png file #}
-<img src="{{ absolute_url(asset('images/logo.png')) }}">
+    <h3>A bientot !</h3>
+    <p style="font-size: 7.5px">S'il s'agit d'une erreur, vous pouvez nous le signaler à san@antonio.net</p>
+</div>
