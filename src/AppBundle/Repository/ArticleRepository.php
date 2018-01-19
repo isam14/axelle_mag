@@ -32,4 +32,14 @@ class ArticleRepository extends EntityRepository
             ->setMaxResults(20)
             ->getResult();
     }
+
+    public function searchArticle($search)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT a FROM AppBundle:Article a WHERE a.titre LIKE :search ORDER BY a.id DESC'
+            )
+            ->setParameter('search', '%'.$search.'%')
+            ->getResult();
+    }
 }
