@@ -1,0 +1,26 @@
+{# $_GET Twig Method {{ app.request.query.get("search") }} #}
+
+{% extends 'base.html.twig' %}
+{% set search = app.request.query.get('search') %}
+{% block body %}
+    <div class="row margTop">
+        <div class='page-header'>
+            <h1 class="searched">"{{ search }}"</h1>
+        </div>
+        {% for article in articleSearched %}
+            <div class="col-xs-6 articleImage crop">
+                <a href="{{ path('article', {'id': article.id}) }}">
+                    <img class="imageContained cropedImage" src="{{ asset('uploads/images/articles/') }}{{ article.image }}" alt="">
+                    <h4 class="inlinedIndex articleCaption">
+                        {{ article.titre |length > 45 ?
+                        article.titre |slice(0, 45) ~ '...' :
+                        article.titre }}
+                    </h4>
+                    <h4 class="inlinedIndex articleRubriqueCaption titleCatAndArt">
+                        <a href="{{ path('categorie', {'catId': article.SubRubrique.id}) }}">{{ article.SubRubrique }}</a>
+                    </h4>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

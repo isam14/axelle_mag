@@ -21,11 +21,14 @@
     },
     "require": {
         "php": ">=5.5.9",
+        "bmatzner/fontawesome-bundle": "~4.3",
         "components/jquery": "^3.1",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "egeloen/ckeditor-bundle": "^6.0",
         "friendsofsymfony/user-bundle": "~2.0",
         "incenteev/composer-parameter-handler": "^2.0",
+        "javiereguiluz/easyadmin-bundle": "^1.17",
         "oyejorge/less.php": "v1.7.0.14",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
@@ -37,7 +40,7 @@
         "twbs/bootstrap": "^3.3",
         "twig/twig": "^1.0||^2.0",
         "vich/uploader-bundle": "^1.7",
-        "bmatzner/fontawesome-bundle": "~4.3"
+        "helios-ag/fm-elfinder-bundle": "~6"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -60,7 +63,8 @@
         ]
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "component-dir": "web/assets"
     },
     "extra": {
         "symfony-app-dir": "app",

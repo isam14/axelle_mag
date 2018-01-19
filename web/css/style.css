@@ -1,17 +1,15 @@
 body {
     padding: 0;
     margin: 3% 0 0 0;
-    background: linear-gradient(#FFD4E4, white);
+    background: linear-gradient(#fcefef, white);
     background-position: center;
     background-size: 100% 100%;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     font-family: 'Quattrocento Sans', sans-serif;
     font-size: 1.5em;
 }
 
-/*div {*/
-    /*border: 1px solid black;*/
-/*}*/
 .logo {
     max-width: 40%;
     margin-bottom: 3%;
@@ -21,20 +19,70 @@ body {
     border: 1px solid black;
 }
 
-.itemTopMenu>a, .itemTopMenu>a:active, .itemTopMenu>a:visited {
+a, a:active, a:visited {
+    text-decoration: underline;
+    color: black;
+}
+
+a:hover {
+    color: black;
+    font-weight: 900;
+}
+
+a.categorieLink, a.categorieLink:active, a.categorieLink:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a.categorieLink:hover {
+    color: black;
+    font-weight: 900;
+}
+
+.itemTopMenu a, .itemTopMenu a:active, .itemTopMenu a:visited {
+    text-decoration: none;
+    font-weight: 900;
     color: black;
     padding-top: 0.3em;
 }
 
-.itemTopMenu>a:hover {
+.itemTopMenu a:hover {
     font-weight: 900;
     text-decoration: none;
     border-top: 1px solid black;
 }
 
+.sideMenuLink {
+    margin-top: 0;
+    padding-top: 0;
+    color: black;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+.sideMenuLink h4 {
+    padding: 0 1.5em 0 0;
+}
+
+.sideMenuLink:hover h4 {
+    font-weight: 900;
+    color: black;
+}
+
+.sideMenuLink a, .sideMenuLink a:active, .sideMenuLink a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.sideMenuLink a:hover {
+    font-weight: 900;
+    color: black;
+}
+
 input, input:focus {
     background-color: rgba(0,0,0,0);
+    color: white;
     border: none;
+    padding: 0.2em 0.5em 0 0;
     outline-width: 0;
 }
 
@@ -46,8 +94,222 @@ button, button:focus {
 
 .borderBottom {
     border-bottom: 1px solid black;
+    margin-bottom: 3%;
 }
 
 .borderTop {
     border-top: 1px solid black;
+}
+
+
+.borderLeft {
+    border-left: 1px solid black;
+}
+
+.borderRight {
+    border-right: 1px dashed black;
+}
+
+.margTop {
+    margin-top: 3%;
+}
+
+.paddingTop {
+    padding-top: 0.24em;
+}
+
+.noPadding h3 {
+    padding: 0;
+    margin-top: -0.25em;
+}
+
+.imageContained {
+    width: 100%;
+}
+
+.articleImage {
+    position: relative;
+    padding: 0;
+    height: 10%;
+}
+
+.col-md-12 h4.articleCaption {
+    position: absolute;
+    width: 100%;
+    padding: 0.85em 0.5em;
+}
+
+.articleCaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    margin-bottom: 0;
+    width: 100%;
+    color: white;
+    background-color: rgba(0,0,0,0.75);
+    padding: 0.3em 0.5em;
+}
+
+.articleRubriqueCaption {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    margin-bottom: 0;
+    width: auto;
+    color: white;
+    background-color: rgba(0,0,0,0.75);
+    border-radius: 25px;
+    padding: 0.25em 0.5em 0.35em;
+}
+
+.articleRubriqueCaption a, .articleRubriqueCaption a:visited, .articleRubriqueCaption a:focus {
+    color: white;
+    text-decoration: none;
+}
+
+.crop {
+    height: 20em;
+    overflow: hidden;
+}
+
+.cropedImage {
+    width: 100%;
+    min-height: 100%;
+}
+
+.lowMargTop {
+    margin-top: 0;
+}
+
+.articleImage img {
+    max-width: 100%;
+
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+
+.articleImage:hover img {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    max-width: 100%;
+}
+
+.staticSide {
+    position: fixed;
+    width: 250px;
+    top: 20px;
+    z-index: 3;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.staticMenu {
+    position: fixed;
+    width: 0px;
+    z-index: 5;
+}
+
+.titleMenu {
+    border: 1px solid black;
+    border-left: none;
+    background-color: #fcefef;
+    padding: 0;
+}
+
+.newsLetter {
+    position: relative;
+    /*background: linear-gradient(white, #FFDBEB);*/
+    padding: 0.5em 0;
+    z-index: 1;
+}
+
+.mentions {
+    background-color: #bfbfbf;
+    padding: 1em 0 0.5em 0;
+}
+
+.v-bottom{
+    display: inline-block;
+    float: none;
+    vertical-align: middle;
+    width: 49%;
+}
+
+.titleBar {
+    border-top: 2px solid #ccc;
+    height: 2px;
+    margin: 45px 0 30px;
+    text-align: center;
+}
+
+.titleBar h1{
+    background-color: #FEF6F6;
+    display: inline-block;
+    margin-top: -0.6em;
+    padding: 0 15px;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+.titleBar h1:hover{
+    font-weight: 900;
+}
+
+.text-logo-bar {
+    border-top: 2px solid #ccc;
+    height: 2px;
+    margin: 15% 0 50px;
+    text-align: center;
+}
+
+.text-logo-bar h1{
+    background-color: #FEF6F6;
+    display: inline-block;
+    margin-top: -0.6em;
+    padding: 0 15px;
+    vertical-align: middle;
+    font-size:3em;
+    font-family: 'Dancing Script', cursive;
+}
+
+.titleCatAndArt {
+    font-family: 'Dancing Script', cursive;
+}
+
+#page {
+    margin-bottom: 165px;
+}
+
+.img-sideMenu {
+    width: 75px;
+    height: 50px;
+}
+
+.inlined {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.inlinedIndex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.black {
+    color: black;
+}
+
+.span{
+    font-weight: bold;
+}
+
+.searched {
+    word-wrap: break-word;
+
 }

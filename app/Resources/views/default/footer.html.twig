@@ -1,16 +1,25 @@
-<div class="container-fluid borderTop">
-    <div class="col-md-9">
-        <ul class="list-inline">
-            <li class="itemTopMenu">A propos</li>
-            <li class="itemTopMenu">Contact</li>
-            <li class="itemTopMenu">Mentions légales</li>
-            <li class="itemTopMenu">Social</li>
-        </ul>
+<div class="row">
+    <div class="col-xs-12 newsLetter">
+        <div class="col-xs-6 paddingTop text-right">
+            <h4 for="newsLetterMail"><strong>Pour recevoir la newsletter, inscrivez-vous !</strong></h4>
+        </div>
+        <div class="col-xs-6 text-left">
+            <form action="{{ path('subscribe') }}" method="post">
+                <h4><input class="text-right" id="newsLetterMail" name="newsLetterMail" type="email" placeholder="Mon email" required>
+                    <button type="submit"><i class="fa fa-envelope" aria-hidden="true"></i></button></h4>
+            </form>
+        </div>
     </div>
-    <div class="col-md-3">
-        <form class="" action="" method="post">
-            <input class="text-right" type="text" placeholder="Recherche">
-            <button type="submit" class=""><i class="fa fa-search" aria-hidden="true"></i></button>
-        </form>
+    <div class="col-xs-12 mentions borderTop">
+        <ul class="list-inline">
+            <li class=""><a href=""><i class="fa fa-2x fa-facebook-square" aria-hidden="true"></i></a></li>
+            <li class=""><a href=""><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></a></li>
+            <li class=""><a href=""><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a></li>
+        </ul>
+        <ul class="list-inline">
+            <li class="itemTopMenu"><a href="">A propos</a></li>
+            <li class="itemTopMenu"><a href="">Contact</a></li>
+            <li class="itemTopMenu"><a href="{{ path('mentions') }}">Mentions légales</a></li>
+        </ul>
     </div>
 </div>

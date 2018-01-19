@@ -1,6 +1,14 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /admin
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
-
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

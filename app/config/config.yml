@@ -7,7 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-
+    app.path.article_images: /uploads/images/articles
 framework:
     #esi: ~
     translator: { fallbacks: ['%locale%'] }
@@ -66,7 +66,6 @@ swiftmailer:
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
-    spool: { type: memory }
 
 # FosUserBundle
 fos_user:
@@ -147,3 +146,104 @@ assetic:
 #Vich
 vich_uploader:
     db_driver: orm
+    mappings:
+        article_images:
+            uri_prefix:         '%app.path.article_images%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/articles'
+            namer: vich_uploader.namer_uniqid
+
+
+ivory_ck_editor:
+    configs:
+        article:
+            filebrowserBrowseRoute: 'elfinder'
+            toolbar: "tool_article"
+    toolbars:
+       configs:
+           tool_article: [ "@texte",  "@puce" , "@other", "@web" ]
+       items:
+           texte: [ 'Bold', 'Italic', 'Underline' ,'TextColor' ]
+           puce:     [ 'NumberedList', 'BulletedList']
+           other:     ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
+           web: ['Image','Link', 'Unlink','Source']
+
+easy_admin:
+    site_name: '<img src="/img/logowhite.png" alt="Logo Axelle Mag" />'
+    design:
+        brand_color: 'dark'
+        # brand_color: 'dark'
+    entities:
+        Article:
+            class: AppBundle\Entity\Article
+            form:
+                fields:
+                    - titre
+                    - { property: 'contenu', type: 'ckeditor' }
+                    - video
+                    - { property: 'subRubrique', label: 'Sous-rubrique'}
+                    - { property: 'imageFile', type: 'file' }
+            list:
+                max_results: 30
+                fields:
+                    - 'titre'
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
+                    - { property: 'datePost', label: 'Date'}
+            show:
+                fields:
+                    - titre
+                    - { property: 'datePost', label: 'Date'}
+                    - contenu
+                    - video
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }   
+        Rubrique:
+            class: AppBundle\Entity\Rubrique
+            show:
+                fields:
+                    - nom
+            list:
+                fields:
+                    - nom
+            form:    
+                fields:
+                    - nom
+        Sous_rubrique:
+            class: AppBundle\Entity\SubRubric
+            show:
+                fields:
+                    - name
+                    - rubrique
+            list:
+                fields:
+                    - name
+            form:    
+                fields:
+                    - name
+                    - rubrique
+        Utilisateur:
+            class: AppBundle\Entity\User
+        Info_Site:
+            class: AppBundle\Entity\SiteInfo
+            
+fm_elfinder:
+   #assets_path: / # default is /assets, this is where css/js elfinder files are
+   instances:
+       default:
+           locale: %locale% # defaults to current request locale
+           editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce, form, simple, custom
+           #editor_template: custom template for your editor # default null
+           #path_prefix: / # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
+           #fullscreen: true|false # default is true, applies to simple and ckeditor editors
+           #theme: smoothness # jquery theme, default is 'smoothness'
+           include_assets: true # disable if you want to manage loading of javascript and css assets manually
+           #visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
+           connector:
+               #debug: true|false # defaults to false
+               roots:       # at least one root must be defined, defines root filemanager directories
+                   uploads:
+                       #show_hidden: true|false # defaults to false, hides dotfiles
+                       driver: LocalFileSystem
+                       path: uploads
+                       upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                       upload_deny: ['all']
+                       upload_max_size: 2M # also file upload sizes restricted in php.ini
+
