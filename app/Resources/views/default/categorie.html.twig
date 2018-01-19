@@ -1,29 +1,38 @@
 {% extends 'base.html.twig' %}
-{#{% set catId = app.request.pathinfo[1:] %}#}
+{% block title %}
+    Axelle Magazine - {{ rubrique.name }}
+{% endblock %}
 {% block body %}
-{% set firstA = rubrique.articles|last %}
     <div class="row">
-        <div class="col-md-12 articleImage crop">
-        <a href="{{ path('article', {'id': firstA.id }) }}">
-            <img class="imageContained" src="/uploads/images/articles/{{ firstA.image }}" alt="">
-            <h4 class="articleCaption"> {{ firstA.titre }}</h4>
-        </a>
+        <div class='page-header'>
+            <h1 class="titleCatAndArt">{{ rubrique.name }}</h1>
         </div>
-    </div>
-
-    <div class="row margTop">
-        {#<h1 class="lowMargTop">Actualités</h1>#}
-        {% for article in rubrique.articles|reverse %}
-           {% if loop.first == false %}
-            <div class="col-xs-3 articleImage crop">
-                <a href="{{ path('article', {'id': article.id }) }}">
-                    <img class="imageContained cropedImage" src="/uploads/images/articles/{{ article.image }}" alt="image article">
-                    <h4 class="articleCaption">
-                        {{ article.titre }}
-                    </h4>
-                </a>
-            </div>
-            {% endif %}
-        {% endfor %}
+        <div class="margTop">
+            {% for article in rubrique.articles|reverse %}
+                {% if loop.first == false %}
+                    <div class="col-xs-3 articleImage crop">
+                        <a href="{{ path('article', {'id': article.id }) }}">
+                            <img class="imageContained cropedImage" src="/uploads/images/articles/{{ article.image }}" alt="image article">
+                            <h4 class="articleCaption titleCatAndArt">
+                                {{ article.titre|length > 35 ?
+                                article.titre|slice(0, 35) ~ '...' :
+                                article.titre  }}
+                            </h4>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="col-md-12 articleImage crop">
+                        <a href="{{ path('article', {'id': article.id }) }}">
+                            <img class="imageContained cropedImage" src="/uploads/images/articles/{{ article.image }}" alt="">
+                            <h4 class="articleCaption titleCatAndArt">
+                                {{ article.titre|length > 75 ?
+                                article.titre|slice(0, 75) ~ '...' :
+                                article.titre  }}
+                            </h4>
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

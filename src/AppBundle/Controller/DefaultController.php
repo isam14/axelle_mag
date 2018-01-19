@@ -60,7 +60,8 @@ class DefaultController extends Controller
         return $this->render('default/mentions.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
-            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'ariclesIndex' => $this->articlesIndex()
         ));
     }
 
