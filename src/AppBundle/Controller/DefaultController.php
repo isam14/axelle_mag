@@ -3,11 +3,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Newsletter;
 use AppBundle\Entity\Rubrique;
 use AppBundle\Entity\SubRubric;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -80,16 +82,16 @@ class DefaultController extends Controller
 
     public function categorieAction($catId)
     {
-       $rubrique = $this->getDoctrine()
+        $rubrique = $this->getDoctrine()
             ->getRepository(SubRubric::class)
             ->find($catId);
 
         return $this->render('default/categorie.html.twig', array(
-        'articlesRightMenu' => $this->articleRightMenu(),
-        'categoriesLeftMenu' => $this->categorieLeftMenu(),
-        'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
-        'rubrique' => $rubrique
-    ));
+            'articlesRightMenu' => $this->articleRightMenu(),
+            'categoriesLeftMenu' => $this->categorieLeftMenu(),
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'rubrique' => $rubrique
+        ));
     }
 
     /**
@@ -129,25 +131,32 @@ class DefaultController extends Controller
      */
     public function subscribeAction(Request $request, \Swift_Mailer $mailer)
     {
+        $email = htmlspecialchars($request->request->get(('newsLetterMail')));
 
-        $request = htmlspecialchars($_POST['newsLetterMail']);
-//        $message = (new \Swift_Message('Hello Email'))
-//            ->setFrom('tira.nicolas@gmail.com')
-//            ->setTo('tira.nicolas@gmail.com')
-//            ->setBody(
-//                $this->renderView(
-//                    'Emails/subscribedNewsletter.html.twig',
-//                    array('name' => 'test')
-//                ),
-//                'text/html'
-//            );
-//        $this->get('mailer')->send($message);
+        $findIfEmailExists = $this->getDoctrine()
+            ->getRepository(Newsletter::class)
+            ->findBy(['email' => $email]);
 
-        return $this->render('default/index.html.twig', array(
-            'articlesRightMenu' => $this->articleRightMenu(),
-            'categoriesLeftMenu' => $this->categorieLeftMenu(),
-            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
-            'test' => $request,
-        ));
+        if(count($findIfEmailExists) === 0)
+        {
+            $message = (new \Swift_Message('Inscription A La Newsletter d\'Axelle Magazine'))
+                ->setFrom('tira.nicolas@gmail.com')
+                ->setTo($email)
+                ->setBody(
+                    $this->renderView(
+                        'Emails/newsletter.html.twig'
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($message);
+
+            $em = $this->getDoctrine()->getManager();
+            $mail = new Newsletter();
+            $mail->setEmail($email);
+            $em->persist($mail);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('index');
     }
 }
