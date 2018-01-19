@@ -39,6 +39,13 @@ class DefaultController extends Controller
             ->articlesIndex();
     }
 
+    private function searchArcticles($search)
+    {
+        return $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->searchArticle($search);
+    }
+
     /**
      * @Route("/", name="index")
      */
@@ -106,12 +113,14 @@ class DefaultController extends Controller
      * @Route ("/recherche/", name="recherche")
      */
 
-    public function searchAction()
+    public function searchAction(Request $request)
     {
+        $search = $request->query->get('search');
         return $this->render('default/search.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
-            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu()
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'articleSearched' => $this->searchArcticles($search),
         ));
     }
 
