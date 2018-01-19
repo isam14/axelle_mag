@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-12 articleImage crop">
             <img class="imageContained" src="http://api.adorable.io/avatars/5000/1" alt="">
-            <h4 class="articleCaption">{{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|length > 75 ?
+            <h4 class="inlinedIndex articleCaption">{{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|length > 75 ?
                 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|slice(0, 75) ~ '...' :
                 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'  }}
             </h4>
@@ -15,12 +15,12 @@
             <div class="col-xs-6 articleImage crop">
                 <a href="{{ path('article', {'id': article.id}) }}">
                     <img class="imageContained cropedImage" src="/uploads/images/articles/{{ article.image }}" alt="{{ article.titre }}">
-                    <h4 class="articleCaption">
+                    <h4 class="inlinedIndex articleCaption">
                         {{ article.titre|length > 45 ?
                         article.titre|slice(0, 45) ~ '...' :
                         article.titre  }}
                     </h4>
-                    <h4 class="articleRubriqueCaption titleCatAndArt">
+                    <h4 class="inlinedIndex articleRubriqueCaption titleCatAndArt">
                         <a href="{{ path('categorie', {'catId': article.SubRubrique.id}) }}">{{ article.SubRubrique }}</a>
                     </h4>
                 </a>
