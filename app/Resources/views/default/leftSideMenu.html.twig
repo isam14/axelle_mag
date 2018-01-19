@@ -1,6 +1,6 @@
 <div id="wrapper">
     <div class="overlay"></div>
-    <nav class="navbar navbar-inverse navbar-fixed-top text-left" id="sidebar-wrapper" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top text-left titleCatAndArt" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
                 <a href="/">
@@ -24,14 +24,14 @@
                     <ul class="dropdown-menu" role="menu">
                         <li class="dropdown-header">Les {{ categorie.nom }}</li>
                         {% for sousRubrique in categorie.subRubriques %}
-                            <li class="sousCategorie"><a href="{{ path('categorie', {'catId': sousRubrique.id }) }}">{{ sousRubrique.name }}</a></li>
+                            <li class="sousCategorie"><a class="leftMenuLink" href="{{ path('categorie', {'catId': sousRubrique.id }) }}">{{ sousRubrique.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
             {% endfor %}
             {% for sousRubrique in sousRubriqueLeftMenu %}
                 <li class="categorie">
-                    <a href="{{ path('categorie', {'catId': sousRubrique.id}) }}">{{ sousRubrique }}</a>
+                    <a class="leftMenuLink" href="{{ path('categorie', {'catId': sousRubrique.id}) }}">{{ sousRubrique }}</a>
                 </li>
             {% endfor %}
         </ul>

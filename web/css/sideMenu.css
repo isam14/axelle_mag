@@ -1,5 +1,6 @@
 
-#wrapper {  padding-left: 0;
+#wrapper {
+    padding-left: 0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -7,15 +8,15 @@
 }
 
 #wrapper.toggled {
-    padding-left: 250px;
+    padding-left: 450px;
 }
 
 #sidebar-wrapper {
     z-index: 1000;
-    left: 250px;
+    left: 450px;
     width: 0;
     height: 100%;
-    margin-left: -250px;
+    margin-left: -450px;
     overflow-y: auto;
     overflow-x: hidden;
     background: #1a1a1a;
@@ -30,7 +31,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 450px;
 }
 
 #page-content-wrapper {
@@ -40,7 +41,7 @@
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
-    margin-right: -250px;
+    margin-right: -450px;
 }
 
 /*-------------------------------*/
@@ -50,15 +51,15 @@
 .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 250px;
+    width: 450px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 .sidebar-nav li {
-    position: relative; 
-    line-height: 20px;
+    position: relative;
+    line-height: 100%;
     display: inline-block;
     width: 100%;
 }
@@ -76,8 +77,8 @@
       -moz-transition:  width .2s ease-in;
        -ms-transition:  width .2s ease-in;
             transition: width .2s ease-in;
-
 }
+
 .sidebar-nav li:first-child a {
     color: #fff;
     background-color: #1a1a1a;
@@ -120,7 +121,7 @@
     display: block;
     color: #ddd;
     text-decoration: none;
-    padding: 10px 15px 10px 30px;
+    padding: 20px 15px 20px 30px;
 }
 
 .sidebar-nav li a:hover,
@@ -135,7 +136,7 @@
 }
 
 .sidebar-nav > .sidebar-brand {
-    height: 65px;
+    height: 130px;
     font-size: 20px;
     line-height: 44px;
 }
@@ -281,17 +282,20 @@
     z-index: 4;
 }
 
+/*rest*/
+
 .sousCategorie {
     margin-left: 15px;
+    font-size: 1.8em;
 }
 
 .categorie {
-    font-size: 20px;
+    font-size: 2em;
 }
 
 .recherche {
-    padding: 10px 15px 10px 30px;
-    font-size: 20px;
+    padding: 20px 15px 20px 30px;
+    font-size: 2em;
     color: #ddd;
     padding-right: 0;
 }
