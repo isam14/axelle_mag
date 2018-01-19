@@ -1,8 +1,8 @@
 <div class="titleCatAndArt row noPadding">
-    <h3>Dernière Actus</h3>
+    <h3 class="titleCatAndArt">Dernière Actus</h3>
 </div>
 {% for article in articlesRightMenu %}
-    <div class="row sideMenuLink titleCatAndArt">
+    <div class="row sideMenuLink">
         <a href="{{ path('article', {'id': article.id}) }}">
             <div class="inlined">
                 <img class="col-xs-4 img-sideMenu" src="{{ asset('/uploads/images/articles/') }}{{ article.image }}" alt="">

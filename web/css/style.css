@@ -277,7 +277,6 @@ button, button:focus {
 }
 
 .titleCatAndArt {
-    font-weight: 900;
     font-family: 'Dancing Script', cursive;
 }
 
@@ -296,11 +295,21 @@ button, button:focus {
     text-align: left;
 }
 
+.inlinedIndex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .black {
     color: black;
-
 }
 
 .span{
     font-weight: bold;
+}
+
+.searched {
+    word-wrap: break-word;
+
 }
