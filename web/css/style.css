@@ -305,6 +305,11 @@ button, button:focus {
     color: black;
 }
 
+.span{
+    font-weight: bold;
+}
+
 .searched {
     word-wrap: break-word;
+
 }
