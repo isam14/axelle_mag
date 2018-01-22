@@ -263,9 +263,8 @@ class Article
     }
 
     /**
-     * One Article has One SelectedArticle.
-     * @ORM\OneToOne(targetEntity="SelectedArticle", inversedBy="article")
-     * @ORM\JoinColumn(name="selected_article_id", referencedColumnName="id", nullable=true)
+     * One SelectedArticle has One Article.
+     * @ORM\OneToMany(targetEntity="SelectedArticle", mappedBy="article")
      */
     private $selectedArticle;
 
@@ -287,7 +286,8 @@ class Article
 
     public function __toString()
     {
-        return $this->getSelectedArticle().$this->getTitre();
+
+        return $this->getTitre();
     }
 }
 

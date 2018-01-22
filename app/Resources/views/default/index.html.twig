@@ -2,11 +2,13 @@
 {% block body %}
     <div class="row">
         <div class="col-md-12 articleImage crop">
-            <img class="imageContained" src="http://api.adorable.io/avatars/5000/1" alt="">
-            <h4 class="inlinedIndex articleCaption">{{ 'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|length > 75 ?
-                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'|slice(0, 75) ~ '...' :
-                'Lorem ipsum dolor sit amet test olol okaofkaoe apzpnazfolol okaofkaoe apzpnazf'  }}
-            </h4>
+            <a href="{{ path('article', {'id': articleShowFirst.article.id}) }}">
+                <img class="imageContained" src="/uploads/images/articles/{{ articleShowFirst.article.image }}" alt="{{ articleShowFirst.article.titre }}">
+                <h4 class="inlinedIndex articleCaption">{{ articleShowFirst.article.titre|length > 75 ?
+                    articleShowFirst.article.titre|slice(0, 75) ~ '...' :
+                    articleShowFirst.article.titre  }}
+                </h4>
+            </a>
         </div>
     </div>
 

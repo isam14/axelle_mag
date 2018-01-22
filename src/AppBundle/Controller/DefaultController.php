@@ -6,6 +6,7 @@ use AppBundle\Entity\Article;
 use AppBundle\Entity\Mentions;
 use AppBundle\Entity\Newsletter;
 use AppBundle\Entity\Rubrique;
+use AppBundle\Entity\SelectedArticle;
 use AppBundle\Entity\SiteInfo;
 use AppBundle\Entity\SubRubric;
 use AppBundle\Entity\Contact;
@@ -16,10 +17,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
+    private function articleShowFirst()
+    {
+        return $this->getDoctrine()
+            ->getRepository(SelectedArticle::class)
+            ->articleShowIndex();
+    }
     private function articleRightMenu()
     {
         return  $this->getDoctrine()
-            ->getRepository(Article::class)
+            ->getRepository(SelectedArticle::class)
             ->articlesRightMenu();
     }
 
@@ -76,6 +83,7 @@ class DefaultController extends Controller
             'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
             'reseaux' => $this->getReseauxSociaux()[0],
             'articlesIndex' => $this->articlesIndex(),
+            'articleShowFirst' => $this->articleShowFirst()[0]
         ));
     }
 

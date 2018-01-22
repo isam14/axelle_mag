@@ -13,16 +13,6 @@ use AppBundle\Entity\SubRubric;
  */
 class ArticleRepository extends EntityRepository
 {
-    public function articlesRightMenu()
-    {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT a FROM AppBundle:Article a ORDER BY a.id DESC'
-            )
-            ->setMaxResults(3)
-            ->getResult();
-    }
-
     public function articlesIndex()
     {
         return $this->getEntityManager()

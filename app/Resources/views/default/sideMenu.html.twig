@@ -1,15 +1,15 @@
 <div class="titleCatAndArt row noPadding">
     <h3 class="titleCatAndArt">Axelle Express</h3>
 </div>
-{% for article in articlesRightMenu %}
+{% for sideSelectedArticle in articlesRightMenu %}
     <div class="row sideMenuLink">
-        <a href="{{ path('article', {'id': article.id}) }}">
+        <a href="{{ path('article', {'id': sideSelectedArticle.article.id}) }}">
             <div class="inlined">
-                <img class="col-xs-4 img-sideMenu" src="{{ asset('/uploads/images/articles/') }}{{ article.image }}" alt="">
+                <img class="col-xs-4 img-sideMenu" src="{{ asset('/uploads/images/articles/') }}{{ sideSelectedArticle.article.image }}" alt="">
                 <h4 class="col-xs-8">
-                    {{ article.titre|length > 15 ?
-                    article.titre|slice(0, 15) ~ '...' :
-                    article.titre  }}
+                    {{ sideSelectedArticle.article.titre|length > 15 ?
+                    sideSelectedArticle.article.titre|slice(0, 15) ~ '...' :
+                    sideSelectedArticle.article.titre  }}
                 </h4>
             </div>
         </a>

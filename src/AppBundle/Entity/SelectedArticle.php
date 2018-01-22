@@ -65,8 +65,8 @@ class SelectedArticle
     }
 
     /**
-     * One SelectedArticle has One Article.
-     * @ORM\OneToOne(targetEntity="Article", mappedBy="selectedArticle")
+     * @ORM\ManyToOne(targetEntity="Article", inversedBy="selectedArticle")
+     * @ORM\JoinColumn(name="selected_article_id", referencedColumnName="id", nullable=true)
      */
     private $article;
 
@@ -85,31 +85,4 @@ class SelectedArticle
     {
         $this->article = $article;
     }
-
-    public function __toString()
-    {
-        return $this->getNom();
-    }
-
-//    /**
-//     * @ORM\OneToMany(targetEntity="Article", mappedBy="SelectedArticle")
-//     */
-//    private $article;
-//
-//
-//    public function __construct()
-//    {
-//        $this->article = new ArrayCollection();
-//    }
-//
-//    public function getArticle()
-//    {
-//        return $this->article;
-//    }
-//
-//    public function __toString()
-//    {
-//        return $this->article;
-//        // TODO: Implement __toString() method.
-//    }
 }
