@@ -165,7 +165,7 @@ ivory_ck_editor:
        configs:
            tool_article: [ "@texte",  "@puce" , "@other", "@web" ]
        items:
-           texte: [ 'Bold', 'Italic', 'Underline' ,'TextColor' ]
+           texte: [ 'Bold', 'Italic', 'Underline' ,'TextColor', 'FontSize' ]
            puce:     [ 'NumberedList', 'BulletedList']
            other:     ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']
            web: ['Image','Link', 'Unlink','Source']
@@ -240,6 +240,15 @@ easy_admin:
                     - instagram
                     - mail
             disabled_actions: ['new', 'delete']
+        Mentions:
+            class: AppBundle\Entity\Mentions
+            list:
+                fields:
+                    - 'Contenu'
+            form:
+                fields:
+                    - {property: 'Content', type: 'ckeditor' }
+            disable_actions: ['new', 'delete']
             
 fm_elfinder:
    #assets_path: / # default is /assets, this is where css/js elfinder files are

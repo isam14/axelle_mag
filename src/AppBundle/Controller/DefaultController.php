@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Mentions;
 use AppBundle\Entity\Newsletter;
 use AppBundle\Entity\Rubrique;
 use AppBundle\Entity\SiteInfo;
@@ -82,11 +83,15 @@ class DefaultController extends Controller
      */
     public function mentionsAction ()
     {
+        $mentions = $this->getDoctrine()
+            ->getRepository(Mentions::class)
+            ->findAll();
         return $this->render('default/mentions.html.twig', array(
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
             'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
             'reseaux' => $this->getReseauxSociaux()[0],
+            'mentions' => $mentions[0]
         ));
     }
 
