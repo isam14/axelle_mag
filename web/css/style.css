@@ -115,6 +115,10 @@ button, button:focus {
     margin-top: 3%;
 }
 
+.margBottom {
+    margin-bottom: 3%;
+}
+
 .paddingTop {
     padding-top: 0.24em;
 }
@@ -312,5 +316,14 @@ button, button:focus {
 
 .searched {
     word-wrap: break-word;
+}
 
+.lightcolor {
+    background-color: white;
+}
+.noImage {
+    background-image: url('../img/logo.png');
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: 50% 25%;
 }

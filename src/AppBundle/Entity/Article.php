@@ -257,7 +257,9 @@ class Article
         if(! empty($this->getVideo())){
             $videoId = explode('/', $this->getVideo());
 
-            return '<iframe src="https://player.vimeo.com/video/'.$videoId[count($videoId)-1].'" width="640" height="360" f rameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+            return '<div class="row margBottom margTop">
+                    <iframe src="https://player.vimeo.com/video/'.$videoId[count($videoId)-1].'" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>';
         }
         return '';
     }

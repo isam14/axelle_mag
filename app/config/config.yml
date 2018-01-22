@@ -174,23 +174,26 @@ easy_admin:
     site_name: '<img src="/img/logowhite.png" alt="Logo Axelle Mag" />'
     design:
         brand_color: 'dark'
+        form_theme: 'vertical'
     list:
-            actions:
-                - { name: 'edit', icon: 'pencil', label: '' }
-                - { name: 'delete', icon: 'times', label: ''}
-                - { name: 'new', label: 'Créer'}
+        actions:
+            - { name: 'edit', icon: 'pencil', label: '' }
+            - { name: 'delete', icon: 'times', label: ''}
+            - { name: 'new', label: 'Créer'}
     entities:
         Article:
             label: 'Articles'
             class: AppBundle\Entity\Article
             form:
-                title: 'Créer un article'
+                title: 'Créer/Modifier un article'
                 fields:
-                    - titre
+                    - { type: 'group', css_class: 'col-sm-8'}
+                    - { property: 'titre', label: "Titre de l'article", type_options: {required: true}}
                     - { property: 'contenu', type: 'ckeditor' }
-                    - video
-                    - { property: 'subRubrique', label: 'Rubrique'}
+                    - { type: 'group', css_class: 'col-sm-4' }
                     - { property: 'imageFile', type: 'file' }
+                    - video
+                    - { property: 'subRubrique', label: 'Rubrique', type_options: {required: true } }
             list:
                 title: 'Articles'
                 max_results: 30
@@ -219,9 +222,10 @@ easy_admin:
                 fields:
                     - nom
             form:
-                title: 'Créer une sur-rubrique'
+                title: 'Créer/Modifier une sur-rubrique'
                 fields:
-                    - nom
+                    - { type: 'group', css_class: 'col-sm-5'}
+                    - { property: 'nom', label: 'Nom de la sur-rubrique', type_options: {required: true}}
 
         Sous_rubrique:
             label: 'Rubriques'
@@ -237,9 +241,11 @@ easy_admin:
                     - { property: 'name', label: 'Nom'}
 #                    - { property: 'rubrique', label: 'Sur-rubrique'}
             form:
-                title: 'Créer une rubrique'
+                title: 'Créer/Modifier une rubrique'
                 fields:
-                    - { property: 'name', label: 'Nom'}
+                    - { type: 'group', css_class: 'col-sm-6' }
+                    - { property: 'name', label: 'Nom de la rubrique', type_options: {required: true}}
+                    - { type: 'group', css_class: 'col-sm-6' }
                     - { property: 'rubrique', label: 'Sur-rubrique'}
 
         Utilisateur:
@@ -248,17 +254,25 @@ easy_admin:
                 fields:
                     - { property: 'username', label: "Nom de l'utilisateur"}
                     - email
-                    - { property: 'enabled', label: "Autorisé à effectuer des actions"}
+                    - { property: 'enabled', label: "Compte activé"}
                     - { property: 'lastLogin', label: 'Date de dernière connexion'}
-            disabled_actions: ['new', 'delete']
+            form:
+                title: 'Créer/Modifier un utilisateur'
+                fields:
+                    - { type: 'group', css_class: 'col-sm-5' }
+                    - { property: 'username', label: "Nom de l'utilisateur"}
+                    - email
+                    - { property: 'plainPassword', label: 'Mot de passe', type: 'password', type_options: { required: true } }
 
         Info_Site:
             label: 'Informations'
             class: AppBundle\Entity\SiteInfo
             list:
                 title: 'Informations'
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: 'Editer', css_class: 'col-sm-1' }
                 fields:
-                    - 'A propos'
+                    - { property: 'A_propos', type: 'raw'}
                     - Facebook
                     - Twitter
                     - Instagram
@@ -266,37 +280,43 @@ easy_admin:
             form:
                 title: 'Editer les informations'
                 fields:
+                    - { type: 'group', css_class: 'col-sm-8' }
                     - { property: 'A_propos', type: 'ckeditor' }
+                    - { type: 'group', css_class: 'col-sm-4' }
                     - facebook
                     - twitter
                     - instagram
                     - mail
-            disabled_actions: ['new', 'delete']
+            disabled_actions: ['new', 'delete', 'search']
 
         Contact:
             label: 'Contact'
             class: AppBundle\Entity\Contact
             list:
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: 'Editer', css_class: 'col-sm-1' }
                 fields:
-                    - { property: 'content', label: 'Contact' }
+                    - { property: 'content', label: 'Contenu', type: 'raw', css_class: 'col-sm-10' }
             form:
                 title: 'Editer les contacts'
                 fields:
-                    - { property: 'content', type: 'ckeditor' }
-            disabled_actions: ['new', 'delete']
+                    - { property: 'content', label: 'Contenu', type: 'ckeditor', type_options: {required: true} }
+            disabled_actions: ['new', 'delete', 'search']
 
         Mentions:
             label: 'Mentions légales'
             class: AppBundle\Entity\Mentions
             list:
                 title: 'Mentions légales'
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: 'Editer', css_class: 'col-sm-1' }
                 fields:
-                    - {property: 'content', label: 'Contenu' }
+                    - { property: 'content', label: 'Contenu', type: 'raw', css_class: 'col-sm-10'}
             form:
                 title: 'Editer les mentions légales'
                 fields:
-                    - {property: 'Content', type: 'ckeditor' }
-            disabled_actions: ['new', 'delete']
+                    - { property: 'Content', label: 'Contenu', type: 'ckeditor', type_options: {required: true} }
+            disabled_actions: ['new', 'delete', 'search']
 
         Selected_Article:
             label: 'Articles en avant'
@@ -305,12 +325,12 @@ easy_admin:
                 title: 'Articles en avant'
                 fields:
                     - { property: 'nom', label: 'Emplacement' }
-                    - {property: 'article', label: "Titre de l'article sélectionné"}
+                    - { property: 'article', label: "Titre de l'article sélectionné"}
             form:
                 title: 'Articles en avant'
                 fields:
-                    - {property: 'article', label: "Article à mettre en avant"}
-            disabled_actions: ['new', 'delete']
+                    - {property: 'article', label: "Article à mettre en avant", orderby: 'DESC', type_options: {required: true}}
+            disabled_actions: ['new', 'delete', 'search']
             
 fm_elfinder:
    #assets_path: / # default is /assets, this is where css/js elfinder files are
