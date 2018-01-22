@@ -232,6 +232,7 @@ easy_admin:
                     - facebook
                     - twitter
                     - instagram
+                    - mail
             
 fm_elfinder:
    #assets_path: / # default is /assets, this is where css/js elfinder files are
