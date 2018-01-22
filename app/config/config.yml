@@ -293,9 +293,7 @@ easy_admin:
                 title: 'Articles en avant'
                 fields:
                     - { property: 'nom', label: 'Emplacement' }
-#                    - {property: 'article', label: "Titre de l'article sélectionné"}
-                    - article
-                    - SelectedArticle
+                    - {property: 'article', label: "Titre de l'article sélectionné"}
             form:
                 title: 'Articles en avant'
                 fields:

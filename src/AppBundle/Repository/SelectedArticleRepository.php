@@ -10,4 +10,21 @@ namespace AppBundle\Repository;
  */
 class SelectedArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function articleShowIndex()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                "SELECT a FROM AppBundle:SelectedArticle a WHERE a.id = 4"
+            )
+            ->getResult();
+    }
+
+    public function articlesRightMenu()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                "SELECT a FROM AppBundle:SelectedArticle a WHERE a.article > 1 ORDER BY a.id DESC"
+            )
+            ->getResult();
+    }
 }
