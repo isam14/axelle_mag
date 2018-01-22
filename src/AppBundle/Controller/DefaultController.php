@@ -190,7 +190,7 @@ class DefaultController extends Controller
     /**
      * @Route("/subscribe", name="subscribe")
      */
-    public function subscribeAction(Request $request, \Swift_Mailer $mailer)
+    public function subscribeAction(Request $request)
     {
         $email = htmlspecialchars($request->request->get(('newsLetterMail')));
 
