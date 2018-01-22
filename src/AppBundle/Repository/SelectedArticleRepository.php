@@ -23,7 +23,7 @@ class SelectedArticleRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                "SELECT a FROM AppBundle:SelectedArticle a WHERE a.article > 1 ORDER BY a.id DESC"
+                "SELECT a FROM AppBundle:SelectedArticle a WHERE a.id < 4 ORDER BY a.id DESC"
             )
             ->getResult();
     }
