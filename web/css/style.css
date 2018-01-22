@@ -214,7 +214,7 @@ button, button:focus {
 
 .staticMenu {
     position: fixed;
-    width: 0px;
+    width: 0;
     z-index: 5;
 }
 
@@ -318,9 +318,6 @@ button, button:focus {
     word-wrap: break-word;
 }
 
-.lightcolor {
-    background-color: white;
-}
 .noImage {
     background-image: url('../img/logo.png');
     background-size: 75%;
