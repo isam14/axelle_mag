@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Article;
 use AppBundle\Entity\Newsletter;
 use AppBundle\Entity\Rubrique;
+use AppBundle\Entity\SiteInfo;
 use AppBundle\Entity\SubRubric;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -48,6 +49,20 @@ class DefaultController extends Controller
             ->searchArticle($search);
     }
 
+    private function getReseauxSociaux()
+    {
+        return $this->getDoctrine()
+            ->getRepository(SiteInfo::class)
+            ->getReseaux();
+    }
+
+    private function getApropos()
+    {
+        return $this->getDoctrine()
+            ->getRepository(SiteInfo::class)
+            ->getContentApropos();
+    }
+
     /**
      * @Route("/", name="index")
      */
@@ -57,6 +72,7 @@ class DefaultController extends Controller
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
             'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'reseaux' => $this->getReseauxSociaux()[0],
             'articlesIndex' => $this->articlesIndex(),
         ));
     }
@@ -70,11 +86,9 @@ class DefaultController extends Controller
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
             'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
-            'ariclesIndex' => $this->articlesIndex()
+            'reseaux' => $this->getReseauxSociaux()[0],
         ));
     }
-
-
 
     /**
      * @Route ("/categorie/{catId}", name="categorie")
@@ -90,6 +104,7 @@ class DefaultController extends Controller
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
             'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'reseaux' => $this->getReseauxSociaux()[0],
             'rubrique' => $rubrique
         ));
     }
@@ -107,6 +122,7 @@ class DefaultController extends Controller
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
             'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'reseaux' => $this->getReseauxSociaux()[0],
             'article' => $article
         ));
     }
@@ -122,7 +138,22 @@ class DefaultController extends Controller
             'articlesRightMenu' => $this->articleRightMenu(),
             'categoriesLeftMenu' => $this->categorieLeftMenu(),
             'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'reseaux' => $this->getReseauxSociaux()[0],
             'articleSearched' => $this->searchArcticles($search),
+        ));
+    }
+
+    /**
+     * @Route ("/apropos/", name="apropos")
+     */
+    public function aproposAction()
+    {
+        return $this->render('default/apropos.html.twig', array(
+            'articlesRightMenu' => $this->articleRightMenu(),
+            'categoriesLeftMenu' => $this->categorieLeftMenu(),
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'reseaux' => $this->getReseauxSociaux()[0],
+            'apropos' => $this->getApropos()[0]
         ));
     }
 

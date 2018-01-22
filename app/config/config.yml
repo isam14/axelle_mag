@@ -174,7 +174,6 @@ easy_admin:
     site_name: '<img src="/img/logowhite.png" alt="Logo Axelle Mag" />'
     design:
         brand_color: 'dark'
-        # brand_color: 'dark'
     entities:
         Article:
             class: AppBundle\Entity\Article
@@ -197,7 +196,7 @@ easy_admin:
                     - { property: 'datePost', label: 'Date'}
                     - contenu
                     - video
-                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }   
+                    - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
         Rubrique:
             class: AppBundle\Entity\Rubrique
             show:
@@ -226,6 +225,13 @@ easy_admin:
             class: AppBundle\Entity\User
         Info_Site:
             class: AppBundle\Entity\SiteInfo
+            list:
+                fields:
+                    - 'A propos'
+                    - Facebook
+                    - Twitter
+                    - Instagram
+                    - Mail
             form:
                 fields:
                     - { property: 'A_propos', type: 'ckeditor' }
@@ -233,6 +239,7 @@ easy_admin:
                     - twitter
                     - instagram
                     - mail
+            disabled_actions: ['new', 'delete']
             
 fm_elfinder:
    #assets_path: / # default is /assets, this is where css/js elfinder files are
