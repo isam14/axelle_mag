@@ -54,7 +54,7 @@ class Article
      */
     private $image;
 
-     /**
+    /**
      * @Vich\UploadableField(mapping="article_images", fileNameProperty="image")
      * @var File
      */
@@ -127,7 +127,7 @@ class Article
     {
         $this->contenu = $contenu;
 
-      return $this;
+        return $this;
     }
 
     /**
@@ -256,11 +256,38 @@ class Article
     public function getEmbedVideo(){
         if(! empty($this->getVideo())){
             $videoId = explode('/', $this->getVideo());
-            
+
             return '<iframe src="https://player.vimeo.com/video/'.$videoId[count($videoId)-1].'" width="640" height="360" f rameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
         }
-            return '';
-        }
+        return '';
+    }
 
+    /**
+     * One Article has One SelectedArticle.
+     * @ORM\OneToOne(targetEntity="SelectedArticle", inversedBy="article")
+     * @ORM\JoinColumn(name="selected_article_id", referencedColumnName="id", nullable=true)
+     */
+    private $selectedArticle;
+
+    /**
+     * @return mixed
+     */
+    public function getSelectedArticle()
+    {
+        return $this->selectedArticle;
+    }
+
+    /**
+     * @param mixed $selectedArticle
+     */
+    public function setSelectedArticle($selectedArticle)
+    {
+        $this->selectedArticle = $selectedArticle;
+    }
+
+    public function __toString()
+    {
+        return $this->getSelectedArticle().$this->getTitre();
+    }
 }
 
