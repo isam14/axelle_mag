@@ -273,6 +273,18 @@ easy_admin:
                     - mail
             disabled_actions: ['new', 'delete']
 
+        Contact:
+            label: 'Contact'
+            class: AppBundle\Entity\Contact
+            list:
+                fields:
+                    - { property: 'content', label: 'Contact' }
+            form:
+                title: 'Editer les contacts'
+                fields:
+                    - { property: 'content', type: 'ckeditor' }
+            disabled_actions: ['new', 'delete']
+
         Mentions:
             label: 'Mentions légales'
             class: AppBundle\Entity\Mentions
@@ -281,7 +293,7 @@ easy_admin:
                 fields:
                     - {property: 'content', label: 'Contenu' }
             form:
-                title: 'Mentions légales'
+                title: 'Editer les mentions légales'
                 fields:
                     - {property: 'Content', type: 'ckeditor' }
             disabled_actions: ['new', 'delete']
