@@ -16,7 +16,11 @@
         {% for article in articlesIndex %}
             <div class="col-xs-6 articleImage crop">
                 <a href="{{ path('article', {'id': article.id}) }}">
-                    <img class="imageContained cropedImage" src="/uploads/images/articles/{{ article.image }}" alt="{{ article.titre }}">
+                    {% if article.image != null %}
+                        <img class="imageContained cropedImage" src="/uploads/images/articles/{{ article.image }}" alt="{{ article.titre }}">
+                    {% else %}
+                        <img class="imageContained cropedImage noImage" src="{{ asset('img/empty.png') }}" alt="">
+                    {% endif %}
                     <h4 class="inlinedIndex articleCaption">
                         {{ article.titre|length > 45 ?
                         article.titre|slice(0, 45) ~ '...' :
