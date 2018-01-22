@@ -21,6 +21,14 @@ class SiteInfo
      */
     private $id;
 
+     /**
+     * @var text
+     *
+     * @ORM\Column(name="apropos", type="text")
+     */
+    private $apropos;
+
+
     /**
      * @var string
      *
@@ -156,4 +164,3 @@ class SiteInfo
         return $this->mail;
     }
 }
-

@@ -155,6 +155,9 @@ vich_uploader:
 
 ivory_ck_editor:
     configs:
+        SiteInfo:
+            filebrowserBrowseRoute: 'elfinder'
+            toolbar: "tool_article"
         article:
             filebrowserBrowseRoute: 'elfinder'
             toolbar: "tool_article"
@@ -223,6 +226,12 @@ easy_admin:
             class: AppBundle\Entity\User
         Info_Site:
             class: AppBundle\Entity\SiteInfo
+            form:
+                fields:
+                    - { property: 'A_propos', type: 'ckeditor' }
+                    - facebook
+                    - twitter
+                    - instagram
             
 fm_elfinder:
    #assets_path: / # default is /assets, this is where css/js elfinder files are

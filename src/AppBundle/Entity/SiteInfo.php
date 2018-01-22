@@ -21,6 +21,14 @@ class SiteInfo
      */
     private $id;
 
+     /**
+     * @var text
+     *
+     * @ORM\Column(name="apropos", type="text")
+     */
+    private $apropos;
+
+
     /**
      * @var string
      *
@@ -154,5 +162,29 @@ class SiteInfo
     public function getMail()
     {
         return $this->mail;
+    }
+
+    /**
+     * Set apropos.
+     *
+     * @param string $apropos
+     *
+     * @return SiteInfo
+     */
+    public function setApropos($apropos)
+    {
+        $this->apropos = $apropos;
+
+        return $this;
+    }
+
+    /**
+     * Get apropos.
+     *
+     * @return string
+     */
+    public function getApropos()
+    {
+        return $this->apropos;
     }
 }
