@@ -174,58 +174,89 @@ easy_admin:
     site_name: '<img src="/img/logowhite.png" alt="Logo Axelle Mag" />'
     design:
         brand_color: 'dark'
+    list:
+            actions:
+                - { name: 'edit', icon: 'pencil', label: '' }
+                - { name: 'delete', icon: 'times', label: ''}
+                - { name: 'new', label: 'Créer'}
     entities:
         Article:
+            label: 'Articles'
             class: AppBundle\Entity\Article
             form:
+                title: 'Créer un article'
                 fields:
                     - titre
                     - { property: 'contenu', type: 'ckeditor' }
                     - video
-                    - { property: 'subRubrique', label: 'Sous-rubrique'}
+                    - { property: 'subRubrique', label: 'Rubrique'}
                     - { property: 'imageFile', type: 'file' }
             list:
+                title: 'Articles'
                 max_results: 30
                 fields:
                     - 'titre'
                     - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
                     - { property: 'datePost', label: 'Date'}
             show:
+                title: 'Articles'
                 fields:
                     - titre
                     - { property: 'datePost', label: 'Date'}
                     - contenu
                     - video
                     - { property: 'image', type: 'image', base_path: '%app.path.article_images%' }
+
         Rubrique:
+            label: 'Sur-rubriques'
             class: AppBundle\Entity\Rubrique
             show:
+                title: 'Sur-rubriques'
                 fields:
                     - nom
             list:
+                title: 'Sur-rubriques'
                 fields:
                     - nom
-            form:    
+            form:
+                title: 'Créer une sur-rubrique'
                 fields:
                     - nom
+
         Sous_rubrique:
+            label: 'Rubriques'
             class: AppBundle\Entity\SubRubric
             show:
+                title: 'Rubriques'
                 fields:
-                    - name
-                    - rubrique
+                    - { property: 'name', label: 'Nom'}
+                    - { property: 'rubrique', label: 'Sur-rubrique'}
             list:
+                title: 'Rubriques'
                 fields:
-                    - name
-            form:    
+                    - { property: 'name', label: 'Nom'}
+#                    - { property: 'rubrique', label: 'Sur-rubrique'}
+            form:
+                title: 'Créer une rubrique'
                 fields:
-                    - name
-                    - rubrique
+                    - { property: 'name', label: 'Nom'}
+                    - { property: 'rubrique', label: 'Sur-rubrique'}
+
         Utilisateur:
             class: AppBundle\Entity\User
+            list:
+                fields:
+                    - { property: 'username', label: "Nom de l'utilisateur"}
+                    - email
+                    - { property: 'enabled', label: "Autorisé à effectuer des actions"}
+                    - { property: 'lastLogin', label: 'Date de dernière connexion'}
+            disabled_actions: ['new', 'delete']
+
         Info_Site:
+            label: 'Informations'
             class: AppBundle\Entity\SiteInfo
             list:
+                title: 'Informations'
                 fields:
                     - 'A propos'
                     - Facebook
@@ -233,6 +264,7 @@ easy_admin:
                     - Instagram
                     - Mail
             form:
+                title: 'Editer les informations'
                 fields:
                     - { property: 'A_propos', type: 'ckeditor' }
                     - facebook
@@ -240,15 +272,35 @@ easy_admin:
                     - instagram
                     - mail
             disabled_actions: ['new', 'delete']
+
         Mentions:
+            label: 'Mentions légales'
             class: AppBundle\Entity\Mentions
             list:
+                title: 'Mentions légales'
                 fields:
-                    - 'Contenu'
+                    - {property: 'content', label: 'Contenu' }
             form:
+                title: 'Mentions légales'
                 fields:
                     - {property: 'Content', type: 'ckeditor' }
-            disable_actions: ['new', 'delete']
+            disabled_actions: ['new', 'delete']
+
+        Selected_Article:
+            label: 'Articles en avant'
+            class: AppBundle\Entity\SelectedArticle
+            list:
+                title: 'Articles en avant'
+                fields:
+                    - { property: 'nom', label: 'Emplacement' }
+#                    - {property: 'article', label: "Titre de l'article sélectionné"}
+                    - article
+                    - SelectedArticle
+            form:
+                title: 'Articles en avant'
+                fields:
+                    - {property: 'article', label: "Article à mettre en avant"}
+            disabled_actions: ['new', 'delete']
             
 fm_elfinder:
    #assets_path: / # default is /assets, this is where css/js elfinder files are
