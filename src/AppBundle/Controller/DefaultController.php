@@ -8,6 +8,7 @@ use AppBundle\Entity\Newsletter;
 use AppBundle\Entity\Rubrique;
 use AppBundle\Entity\SiteInfo;
 use AppBundle\Entity\SubRubric;
+use AppBundle\Entity\Contact;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -95,6 +96,22 @@ class DefaultController extends Controller
         ));
     }
 
+    /**
+     * @Route("/contact", name="contact" )
+     */
+    public function contactAction ()
+    {
+        $contact = $this->getDoctrine()
+            ->getRepository(contact::class)
+            ->findAll();
+        return $this->render('default/contact.html.twig', array(
+            'articlesRightMenu' => $this->articleRightMenu(),
+            'categoriesLeftMenu' => $this->categorieLeftMenu(),
+            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+            'reseaux' => $this->getReseauxSociaux()[0],
+            'contact' => $contact[0]
+        ));
+    }
     /**
      * @Route ("/categorie/{catId}", name="categorie")
      */
