@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Axelle Magazine - A propos
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class='page-header'>
+            <h1>A propos d'Axelle Magazine</h1>
+        </div>
+        <div class='borderBottom'>
+            <div class="margTop">{{ apropos.apropos|raw }}</div>
+            <span class='pull-right titleCatAndArt'>
+                • A propos
+            </span>
+        </div>
+    </div>
+
+{% endblock %}

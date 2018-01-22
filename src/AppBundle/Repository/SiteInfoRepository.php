@@ -10,4 +10,21 @@ namespace AppBundle\Repository;
  */
 class SiteInfoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getReseaux()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT si.facebook, si.twitter, si.instagram, si.mail FROM AppBundle:SiteInfo si'
+            )
+            ->getResult();
+    }
+
+    public function getContentApropos()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT si.apropos FROM AppBundle:Siteinfo si'
+            )
+            ->getResult();
+    }
 }
