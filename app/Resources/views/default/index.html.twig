@@ -1,17 +1,18 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="row">
-        <div class="col-md-12 articleImage crop">
-            <a href="{{ path('article', {'id': articleShowFirst.article.id}) }}">
-                <img class="imageContained" src="/uploads/images/articles/{{ articleShowFirst.article.image }}" alt="{{ articleShowFirst.article.titre }}">
-                <h4 class="inlinedIndex articleCaption">{{ articleShowFirst.article.titre|length > 75 ?
-                    articleShowFirst.article.titre|slice(0, 75) ~ '...' :
-                    articleShowFirst.article.titre  }}
-                </h4>
-            </a>
+    {% if articleShowFirst.article != null %}
+        <div class="row">
+            <div class="col-md-12 articleImage crop">
+                <a href="{{ path('article', {'id': articleShowFirst.article.id}) }}">
+                    <img class="imageContained" src="/uploads/images/articles/{{ articleShowFirst.article.image }}" alt="{{ articleShowFirst.article.titre }}">
+                    <h4 class="inlinedIndex articleCaption">{{ articleShowFirst.article.titre|length > 75 ?
+                        articleShowFirst.article.titre|slice(0, 75) ~ '...' :
+                        articleShowFirst.article.titre  }}
+                    </h4>
+                </a>
+            </div>
         </div>
-    </div>
-
+    {% endif %}
     <div class="row margTop">
         {% for article in articlesIndex %}
             <div class="col-xs-6 articleImage crop">

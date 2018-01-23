@@ -120,47 +120,55 @@ class DefaultController extends Controller
             'contact' => $contact[0]
         ));
     }
+
     /**
      * @Route ("/categorie/{catId}", name="categorie")
      */
-
     public function categorieAction($catId)
     {
         $rubrique = $this->getDoctrine()
             ->getRepository(SubRubric::class)
             ->find($catId);
+        if(empty($rubrique))
+        {
+            return $this->redirectToRoute('index');
+        } else {
 
-        return $this->render('default/categorie.html.twig', array(
-            'articlesRightMenu' => $this->articleRightMenu(),
-            'categoriesLeftMenu' => $this->categorieLeftMenu(),
-            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
-            'reseaux' => $this->getReseauxSociaux()[0],
-            'rubrique' => $rubrique
-        ));
+            return $this->render('default/categorie.html.twig', array(
+                'articlesRightMenu' => $this->articleRightMenu(),
+                'categoriesLeftMenu' => $this->categorieLeftMenu(),
+                'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+                'reseaux' => $this->getReseauxSociaux()[0],
+                'rubrique' => $rubrique
+            ));
+        }
     }
 
     /**
      * @Route("/article/{id}", name="article", requirements={"id"="\d+"})
      */
-
     public function articleAction($id)
     {
         $article = $this->getDoctrine()
             ->getRepository(Article::class)->find($id);
 
-        return $this->render('default/article.html.twig', array(
-            'articlesRightMenu' => $this->articleRightMenu(),
-            'categoriesLeftMenu' => $this->categorieLeftMenu(),
-            'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
-            'reseaux' => $this->getReseauxSociaux()[0],
-            'article' => $article
-        ));
+        if(empty($article))
+        {
+            return $this->redirectToRoute('index');
+        } else {
+            return $this->render('default/article.html.twig', array(
+                'articlesRightMenu' => $this->articleRightMenu(),
+                'categoriesLeftMenu' => $this->categorieLeftMenu(),
+                'sousRubriqueLeftMenu' => $this->sousRubriqueLeftMenu(),
+                'reseaux' => $this->getReseauxSociaux()[0],
+                'article' => $article
+            ));
+        }
     }
 
     /**
      * @Route ("/recherche/", name="recherche")
      */
-
     public function searchAction(Request $request)
     {
         $search = $request->query->get('search');
@@ -217,7 +225,6 @@ class DefaultController extends Controller
             $em->persist($mail);
             $em->flush();
         }
-
         return $this->redirectToRoute('index');
     }
 }
