@@ -329,7 +329,7 @@ easy_admin:
             form:
                 title: 'Articles en avant'
                 fields:
-                    - {property: 'article', label: "Article à mettre en avant", orderby: 'DESC', type_options: {required: true}}
+                    - {property: 'article', label: "Article à mettre en avant", orderby: 'DESC' }
             disabled_actions: ['new', 'delete', 'search']
             
 fm_elfinder:

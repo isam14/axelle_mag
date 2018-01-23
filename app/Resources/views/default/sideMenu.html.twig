@@ -2,16 +2,18 @@
     <h3 class="titleCatAndArt">Axelle Express</h3>
 </div>
 {% for sideSelectedArticle in articlesRightMenu %}
-    <div class="row sideMenuLink">
-        <a href="{{ path('article', {'id': sideSelectedArticle.article.id}) }}">
-            <div class="inlined">
-                <img class="col-xs-4 img-sideMenu" src="{{ asset('/uploads/images/articles/') }}{{ sideSelectedArticle.article.image }}" alt="">
-                <h4 class="col-xs-8">
-                    {{ sideSelectedArticle.article.titre|length > 15 ?
-                    sideSelectedArticle.article.titre|slice(0, 15) ~ '...' :
-                    sideSelectedArticle.article.titre  }}
-                </h4>
-            </div>
-        </a>
-    </div>
+    {% if sideSelectedArticle.article != null %}
+        <div class="row sideMenuLink">
+            <a href="{{ path('article', {'id': sideSelectedArticle.article.id}) }}">
+                <div class="inlined">
+                    <img class="col-xs-4 img-sideMenu" src="{{ asset('/uploads/images/articles/') }}{{ sideSelectedArticle.article.image }}" alt="">
+                    <h4 class="col-xs-8">
+                        {{ sideSelectedArticle.article.titre|length > 15 ?
+                        sideSelectedArticle.article.titre|slice(0, 15) ~ '...' :
+                        sideSelectedArticle.article.titre  }}
+                    </h4>
+                </div>
+            </a>
+        </div>
+    {% endif %}
 {% endfor %}
