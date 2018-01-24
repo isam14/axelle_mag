@@ -4,7 +4,11 @@
         <div class="row">
             <div class="col-md-12 articleImage crop">
                 <a href="{{ path('article', {'id': articleShowFirst.article.id}) }}">
-                    <img class="imageContained" src="/uploads/images/articles/{{ articleShowFirst.article.image }}" alt="{{ articleShowFirst.article.titre }}">
+                    {% if articleShowFirst.article.image != null %}
+                        <img class="imageContained" src="/uploads/images/articles/{{ articleShowFirst.article.image }}" alt="{{ articleShowFirst.article.titre }}">
+                    {% else %}
+                        <img class="imageContained noImageTopArticle" src="{{ asset('img/empty.png') }}" alt="{{ articleShowFirst.article.titre }}">
+                    {% endif %}
                     <h4 class="inlinedIndex articleCaption">{{ articleShowFirst.article.titre|length > 75 ?
                         articleShowFirst.article.titre|slice(0, 75) ~ '...' :
                         articleShowFirst.article.titre  }}

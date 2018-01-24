@@ -23,6 +23,11 @@
                 {% else %}
                     <div class="col-md-12 articleImage crop">
                         <a href="{{ path('article', {'id': article.id }) }}">
+                            {% if article.image != null %}
+                                <img class="imageContained cropedImage" src="/uploads/images/articles/{{ article.image }}" alt="{{ article.titre }}">
+                            {% else %}
+                                <img class="imageContained noImageTopArticle" src="{{ asset('img/empty.png') }}" alt="{{ article.titre }}">
+                            {% endif %}
                             <img class="imageContained cropedImage" src="/uploads/images/articles/{{ article.image }}" alt="">
                             <h4 class="inlinedIndex articleCaption">
                                 {{ article.titre|length > 75 ?
