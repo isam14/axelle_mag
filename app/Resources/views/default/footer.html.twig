@@ -1,20 +1,20 @@
 <div class="row">
     <div class="col-xs-12 newsLetter">
         <div class="col-xs-6 paddingTop text-right">
-            <h4 for="newsLetterMail"><strong>Pour recevoir la newsletter, inscrivez-vous !</strong></h4>
+            <h4><strong>Pour recevoir la newsletter, inscrivez-vous !</strong></h4>
         </div>
         <div class="col-xs-6 text-left">
             <form action="{{ path('subscribe') }}" method="post">
-                <h4><input class="text-right" id="newsLetterMail" name="newsLetterMail" type="email" placeholder="Mon email" required>
+                <h4><input class="inputMail text-right" id="newsLetterMail" name="newsLetterMail" type="email" placeholder="Mon email" required>
                     <button type="submit"><i class="fa fa-envelope" aria-hidden="true"></i></button></h4>
             </form>
         </div>
     </div>
     <div class="col-xs-12 mentions borderTop">
         <ul class="list-inline">
-            <li class=""><a href="{{ reseaux.facebook }}"><i class="fa fa-2x fa-facebook-square" aria-hidden="true"></i></a></li>
-            <li class=""><a href="{{ reseaux.twitter }}"><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></a></li>
-            <li class=""><a href="{{ reseaux.instagram }}"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="{{ reseaux.facebook }}"><i class="fa fa-3x fa-facebook-square facebook" aria-hidden="true"></i></a></li>
+            <li><a href="{{ reseaux.twitter }}"><i class="fa fa-3x fa-twitter twitter" aria-hidden="true"></i></a></li>
+            <li><a href="{{ reseaux.instagram }}"><i class="fa fa-3x fa-instagram instagram" aria-hidden="true"></i></a></li>
         </ul>
         <ul class="list-inline">
             <li class="itemTopMenu"><a href="{{ path('apropos') }}">A propos</a></li>

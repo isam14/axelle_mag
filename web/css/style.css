@@ -227,7 +227,6 @@ button, button:focus {
 
 .newsLetter {
     position: relative;
-    /*background: linear-gradient(white, #FFDBEB);*/
     padding: 0.5em 0;
     z-index: 1;
 }
@@ -267,8 +266,9 @@ button, button:focus {
 .text-logo-bar {
     border-top: 2px solid #ccc;
     height: 2px;
-    margin: 15% 0 50px;
+    margin: 25% 0 50px;
     text-align: center;
+    vertical-align: middle;
 }
 
 .text-logo-bar h1{
@@ -277,7 +277,7 @@ button, button:focus {
     margin-top: -0.6em;
     padding: 0 15px;
     vertical-align: middle;
-    font-size:3em;
+    font-size:2.5em;
     font-family: 'Dancing Script', cursive;
 }
 
@@ -323,4 +323,35 @@ button, button:focus {
     background-size: 75%;
     background-repeat: no-repeat;
     background-position: 50% 25%;
+}
+
+.noImageTopArticle {
+    background-image: url('../img/logo.png');
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: 50% 7.5%;
+}
+
+.logoAxelle {
+    width: 75%;
+    height: auto;
+    margin-bottom: -125px;
+}
+
+.facebook {
+    color: #0b58a2;
+}
+
+.twitter {
+    color: #00c0ef;
+}
+
+.instagram {
+    background-image: -webkit-gradient( linear, left bottom, right top, color-stop(0, yellow), color-stop(0.55, red), color-stop(0.75, purple) );
+    color:transparent;
+    -webkit-background-clip: text;
+}
+
+.inputMail {
+    color: #333333 !important;
 }
