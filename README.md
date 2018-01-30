@@ -18,4 +18,4 @@ Lancer les requêtes du fichier **initialisationLignesTab.sql** pour set les ent
 
 Pour swiftmailer (système de newsletter), paramétrer **app/config/parameters.yml** (*mailer_...*)
 
-Pour accéder au backoffice, il faudra ajouter /login à l'URL et entrer les identifiants.
+Pour accéder au backoffice, il faudra ajouter /admin à l'URL et entrer les identifiants.
