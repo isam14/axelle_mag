@@ -6,6 +6,7 @@ Faire un **composer update** pour ajouter le vendor et les fichiers requis pour 
 Faire **php bin/console ckeditor:install** puis **php bin/console assets:install --symlink** pour installer le package wysiwyg
  ( si message d'erreur  : sudo apt-get install php7.0-zip  remplacer la version par celle de php sur la machine)
 
+Faire **php bin/console doctrine:database:create** puis **php bin/console doctrine:schema:update --force**
 
 Ajouter /register à l'URL pour créer le compte.
 
