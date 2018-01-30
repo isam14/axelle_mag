@@ -1,4 +1,4 @@
-Axelle Mag
+Axelle Mag -- Procédure de déploiement
 ==========
 
 Faire un **composer update** pour ajouter le vendor et les fichiers requis pour faire tourner symfony.
@@ -19,3 +19,5 @@ Lancer les requêtes du fichier **initialisationLignesTab.sql** pour set les ent
 Pour swiftmailer (système de newsletter), paramétrer **app/config/parameters.yml** (*mailer_...*)
 
 Pour accéder au backoffice, il faudra ajouter /admin à l'URL et entrer les identifiants.
+
+suivre le tutoriel https://symfony.com/doc/3.3/deployment.html pour deployer le site
